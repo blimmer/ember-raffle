@@ -7,6 +7,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('confirm-participants');
+  this.route('ready-for-drawing');
 });
 
 export default Router;
