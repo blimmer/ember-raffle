@@ -11,6 +11,11 @@ export default {
     "createCta": "Create a New Raffle",
     "header": "Your Raffles"
   },
+  "raffleInfo": {
+    "setup": 'Setup',
+    "ready": 'Start the Drawing',
+    "completeSetupTooltip": 'Please complete setup to enable this action',
+  },
   "setupDrawing": {
     "winnerNumberInput": {
       "label": {

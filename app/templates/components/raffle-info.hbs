@@ -1,0 +1,25 @@
+<div class='ui very padded text container segment'>
+  <h1 class='ui header'>
+    <div class='content'>
+      {{raffle.name}}
+    </div>
+  </h1>
+
+  <h2 class='ui header'>
+    <i class='icon em em-memo'></i>
+    {{#link-to 'raffles.raffle.setup' raffle class='content'}}
+      {{t 'raffleInfo.setup'}}
+    {{/link-to}}
+  </h2>
+  <h2 class='ui header'>
+    <i class='icon em em-zap'></i>
+    {{#link-to
+      'raffles.raffle.ready-for-drawing'
+      raffle
+      class='content'
+      disabledWhen=raffleNotSetup
+      title=(if raffleNotSetup completeSetupTooltip)}}
+      {{t 'raffleInfo.ready'}}
+    {{/link-to}}
+  </h2>
+</div>

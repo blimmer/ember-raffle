@@ -13,7 +13,12 @@ Router.map(function() {
   this.route('winners');
   this.route('setup-drawing');
   this.route('raffles', function() {
-    this.route('raffle', { path: ':raffle_id' });
+    this.route('raffle', { path: ':raffle_id' }, function() {
+      this.route('setup');
+      this.route('ready-for-drawing');
+      this.route('run-drawing');
+      this.route('winners');
+    });
   });
 });
 
