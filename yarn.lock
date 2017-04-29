@@ -2067,7 +2067,7 @@ ember-cli-babel@^5.0.0, ember-cli-babel@^5.1.5, ember-cli-babel@^5.1.6, ember-cl
     ember-cli-version-checker "^1.0.2"
     resolve "^1.1.2"
 
-ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.5, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.1.0:
+ember-cli-babel@^6.0.0, ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.5, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.0.0-beta.9, ember-cli-babel@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.1.0.tgz#d9c83a7d0c67cc8a3ccb9bd082971c3593e54fad"
   dependencies:
@@ -2601,6 +2601,13 @@ ember-maybe-import-regenerator@^0.1.5:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
+ember-native-dom-helpers@^0.3.12:
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/ember-native-dom-helpers/-/ember-native-dom-helpers-0.3.12.tgz#034cb273056ac94914e7081925175357e4c37a81"
+  dependencies:
+    broccoli-funnel "^1.1.0"
+    ember-cli-babel "^6.0.0-beta.9"
+
 ember-promise-tools@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-promise-tools/-/ember-promise-tools-1.0.0.tgz#0f3d5bd1cb2b7da4f02abd4cb5cf9bd5399af754"
@@ -2717,6 +2724,14 @@ ember-string-ishtmlsafe-polyfill@^1.1.0:
 ember-test-helpers@^0.6.0-beta.1:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/ember-test-helpers/-/ember-test-helpers-0.6.3.tgz#f864cdf6f4e75f3f8768d6537785b5ab6e82d907"
+
+ember-test-selectors@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/ember-test-selectors/-/ember-test-selectors-0.3.3.tgz#0cf0972c91ce77709c21d7e64403f81e0dd120b9"
+  dependencies:
+    broccoli-stew "^1.4.0"
+    ember-cli-babel "^5.1.7"
+    ember-cli-version-checker "^1.2.0"
 
 ember-truth-helpers@1.2.0:
   version "1.2.0"

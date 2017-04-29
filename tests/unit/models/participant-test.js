@@ -2,7 +2,10 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('participant', 'Unit | Model | participant', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: [
+    'model:raffle',
+    'validator:presence',
+  ]
 });
 
 test('it exists', function(assert) {
