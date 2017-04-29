@@ -1,4 +1,8 @@
+{{#ember-wormhole to='fullscreen-confetti'}}
+  {{confetti-rain}}
+{{/ember-wormhole}}
+
+<h1 class='ui center aligned content container'>Our WINNERS!</h1>
 {{#each model as |winner|}}
-  <h1>GOOD FOR YOU, HONEY!</h1>
-  <h1>{{winner.name}}</h1>
+  {{winner-card winner=winner}}
 {{/each}}

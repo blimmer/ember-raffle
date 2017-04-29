@@ -2389,6 +2389,12 @@ ember-concurrency@^0.8.1:
     ember-getowner-polyfill "^1.1.0"
     ember-maybe-import-regenerator "^0.1.5"
 
+ember-confetti@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ember-confetti/-/ember-confetti-1.0.3.tgz#58138913b8180d960b537df9b5d3982ce9d5cf58"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+
 ember-data@^2.12.0:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-2.12.2.tgz#45369001847b59e7d0ca8b183e9f57cb1f339260"
