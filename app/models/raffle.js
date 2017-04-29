@@ -5,6 +5,13 @@ import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
   participants: validator('length', { min: 1 }),
+  name: validator('presence', true),
+  numberOfWinners: validator('number', {
+    allowString: true,
+    integer: true,
+    min: 1,
+    max: Ember.computed.readOnly('model.participants.length'),
+  }),
 });
 
 export default DS.Model.extend(Validations, {

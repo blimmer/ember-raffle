@@ -1,6 +1,7 @@
 export default {
   "common": {
     "siteName": "ember-raffle",
+    "save": "Save",
   },
   "siteHeader": {
     "raffles": "View All Raffles"
@@ -16,12 +17,22 @@ export default {
     "ready": 'Start the Drawing',
     "completeSetupTooltip": 'Please complete setup to enable this action',
   },
-  "setupDrawing": {
+  "raffleSetupInfo": {
+    'header': "Setup {{raffleName}}",
+    'settings': 'Settings',
+    'addParticipants': 'Add Participants',
+  },
+  "raffleSetupSettings": {
+    "header": "What're the specifics of this raffle?",
+    "nameInput": {
+      "label": "Name",
+    },
     "winnerNumberInput": {
-      "label": {
+      "label": "Number of Winners",
+      "inlineLabel": {
         "one": "winner",
         "other": "winners"
       }
     }
-  }
+  },
 };
