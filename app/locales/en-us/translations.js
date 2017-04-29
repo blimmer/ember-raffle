@@ -44,5 +44,16 @@ export default {
   },
   "raffleSetupConfirmParticipants": {
     "header": "Is this everyone?"
+  },
+  "readyForDrawing": {
+    "header": "We're all set to draw winners for {{raffleName}}!",
+    "meta": {
+      "participants": "{{count}} participants",
+      "numberOfWinners": {
+        "one": "1 winner",
+        "other": "{{count}} winners"
+      }
+    },
+    "runDrawingCta": "Let's Go!",
   }
 };
