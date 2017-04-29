@@ -6,6 +6,10 @@ html, body, body > div {
 
 .main.container {
   margin-top: 7em;
+
+  &.index {
+    margin-top: 0;
+  }
 }
 
 a.disabled {

@@ -64,5 +64,16 @@ export default {
       "one": "Our WINNER",
       "other": "Our WINNERS"
     }
+  },
+  "homepageContent": {
+    "stripes": {
+      "why": {
+        "header": "You need to run a raffle.",
+        "para": "I made a raffle app. It's even free. I mean, c'mon, it doesn't get better than this."
+      },
+      "getStarted": {
+        "cta": "Get Started"
+      }
+    }
   }
 };
