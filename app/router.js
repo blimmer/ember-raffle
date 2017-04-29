@@ -11,7 +11,6 @@ Router.map(function() {
   this.route('ready-for-drawing');
   this.route('drawing');
   this.route('winners');
-  this.route('setup-drawing');
   this.route('raffles', function() {
     this.route('raffle', { path: ':raffle_id' }, function() {
       this.route('setup', function() {
