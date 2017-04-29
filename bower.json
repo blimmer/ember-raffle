@@ -1,6 +1,7 @@
 {
   "name": "raffle",
   "dependencies": {
-    "semantic-ui": "^2.2.10"
+    "semantic-ui": "^2.2.10",
+    "ember-cli-shims": "~0.1.1"
   }
 }

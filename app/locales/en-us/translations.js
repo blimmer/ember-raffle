@@ -35,4 +35,10 @@ export default {
       }
     }
   },
+  "raffleSetupAddParticipants": {
+    "header": "Who's participating in this raffle?",
+    "participantsInput": {
+      "label": "Participants (one per line)"
+    }
+  }
 };
