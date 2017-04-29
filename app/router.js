@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('confirm-participants');
   this.route('ready-for-drawing');
   this.route('drawing');
+  this.route('winners');
 });
 
 export default Router;
