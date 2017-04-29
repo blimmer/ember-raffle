@@ -1,5 +1,11 @@
-<h1>Enter names, one per line:</h1>
-<form>
-  {{textarea value=nameList}}
-  <button onclick={{action submitNames}}>Submit</button>
-</form>
+<h1 class='ui header'>Who's Participating?</h1>
+<div class='ui form'>
+  <div class='field'>
+    <label>Participants (one per line)</label>
+    {{textarea rows=4 value=nameList}}
+  </div>
+  <button class='ui right labeled icon button' onclick={{action submitNames}}>
+    <i class='right arrow icon'></i>
+    Next
+  </button>
+</div>

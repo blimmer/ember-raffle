@@ -1,7 +1,8 @@
 import Ember from 'ember';
-import { compact } from 'lodash';
+import { chain } from 'lodash';
 
 export default Ember.Component.extend({
+  classNames: ['ui', 'padded', 'text', 'container'],
   store: Ember.inject.service(),
   participants: null,
   nameList: Ember.computed(function() {
@@ -16,7 +17,11 @@ export default Ember.Component.extend({
       participant.destroyRecord();
     });
 
-    let names = compact(this.get('nameList').split('\n'));
+    let names = chain(this.get('nameList'))
+      .split('\n')
+      .compact()
+      .uniq()
+      .value();
     names.forEach((name) => {
       store.createRecord('participant', {
         name,

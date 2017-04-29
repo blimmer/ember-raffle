@@ -1,3 +1,4 @@
-{{participant-table participants=model}}
-
-<button onclick={{route-action 'participantsConfirmed'}}>Looks good!</button>
+{{participant-table
+  editParticipants=(route-action 'editParticipants')
+  participantsConfirmed=(route-action 'participantsConfirmed')
+  participants=model}}

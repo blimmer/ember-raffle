@@ -7,6 +7,9 @@ export default Ember.Route.extend({
   actions: {
     participantsConfirmed() {
       this.transitionTo('ready-for-drawing');
+    },
+    editParticipants() {
+      this.transitionTo('index');
     }
   }
 });

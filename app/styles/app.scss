@@ -1,0 +1,10 @@
+@import 'pod-styles';
+
+html, body {
+  height: 100%;
+}
+
+body > div {
+  height: 100%;
+  margin-top: 2em;
+}
