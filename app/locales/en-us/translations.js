@@ -17,6 +17,9 @@ export default {
     "setup": 'Setup',
     "ready": 'Start the Drawing',
     "completeSetupTooltip": 'Please complete setup to enable this action',
+    "completed": {
+      "header": "Winners have already been drawn for this raffle!",
+    }
   },
   "raffleSetupInfo": {
     'header': "Setup {{raffleName}}",
