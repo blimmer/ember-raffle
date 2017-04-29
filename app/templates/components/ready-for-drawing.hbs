@@ -1,0 +1,21 @@
+<div class='ui very padded text container segment'>
+  <h1 class='ui header'>
+    <div class='content'>
+      {{t 'readyForDrawing.header' raffleName=raffle.name}}
+    </div>
+  </h1>
+  <div class='ui left aligned text container'>
+    <div>
+      {{t 'readyForDrawing.meta.participants' count=raffle.participants.length}}
+    </div>
+    <div>
+      {{t 'readyForDrawing.meta.numberOfWinners' count=raffle.numberOfWinners}}
+    </div>
+  </div>
+
+  <div class='ui divider'></div>
+
+  {{#link-to 'raffles.raffle.run-drawing' class='ui massive fluid primary button'}}
+    {{t 'readyForDrawing.runDrawingCta'}}
+  {{/link-to}}
+</div>

@@ -1,0 +1,12 @@
+<h1 class='ui header'>{{t 'raffleSetupAddParticipants.header'}}</h1>
+<div class='ui form'>
+  <div class='field'>
+    <label>{{t 'raffleSetupAddParticipants.participantsInput.label'}}</label>
+    {{textarea rows=4 value=nameList}}
+  </div>
+  <button
+    class='ui primary button'
+    onclick={{action (pipe (action gatherParticipants) (action associateParticipants) (action confirmParticipants))}}>
+    {{t 'common.save'}}
+  </button>
+</div>

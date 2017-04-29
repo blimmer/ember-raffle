@@ -1,10 +1,14 @@
 @import 'pod-styles';
 
-html, body {
+html, body, body > div {
   height: 100%;
 }
 
-body > div {
-  height: 100%;
-  margin-top: 2em;
+.main.container {
+  margin-top: 7em;
+}
+
+a.disabled {
+  cursor: default;
+  color: gray;
 }

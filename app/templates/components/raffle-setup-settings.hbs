@@ -1,0 +1,22 @@
+<h1 class='ui header'>{{t 'raffleSetupSettings.header'}}</h1>
+<div class='ui form'>
+  <div class='field'>
+    <label>{{t 'raffleSetupSettings.nameInput.label'}}</label>
+    <input oninput={{action (mut raffle.name) value="target.value"}} value={{raffle.name}} />
+  </div>
+  <div class='four wide field'>
+    <label>{{t 'raffleSetupSettings.winnerNumberInput.label'}}</label>
+    <div class='ui right labeled input'>
+      <input type='number' oninput={{action (mut raffle.numberOfWinners) value="target.value"}} value={{raffle.numberOfWinners}} />
+      <div class='ui basic label'>
+        {{t 'raffleSetupSettings.winnerNumberInput.inlineLabel' count=raffle.numberOfWinners}}
+      </div>
+    </div>
+  </div>
+  <button
+    class='ui primary button'
+    onclick={{action saveRaffleSettings}}
+    disabled={{or (v-get raffle 'name' 'isInvalid') (v-get raffle 'numberOfWinners' 'isInvalid')}}>
+    {{t 'common.save'}}
+  </button>
+</div>
