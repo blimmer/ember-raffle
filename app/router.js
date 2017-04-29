@@ -12,6 +12,9 @@ Router.map(function() {
   this.route('drawing');
   this.route('winners');
   this.route('setup-drawing');
+  this.route('raffles', function() {
+    this.route('raffle', { path: ':raffle_id' });
+  });
 });
 
 export default Router;
