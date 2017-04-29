@@ -55,5 +55,11 @@ export default {
       }
     },
     "runDrawingCta": "Let's Go!",
+  },
+  "winners": {
+    "header": {
+      "one": "Our WINNER",
+      "other": "Our WINNERS"
+    }
   }
 };

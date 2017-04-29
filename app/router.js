@@ -7,8 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('drawing');
-  this.route('winners');
   this.route('raffles', function() {
     this.route('raffle', { path: ':raffle_id' }, function() {
       this.route('setup', function() {
