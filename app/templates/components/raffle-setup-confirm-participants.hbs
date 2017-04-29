@@ -1,0 +1,15 @@
+<h1 class='ui header'>{{t 'raffleSetupConfirmParticipants.header'}}</h1>
+<div class='ui celled table'>
+  {{#light-table
+    table
+    as |t|}}
+    {{t.head}}
+    {{t.body}}
+  {{/light-table}}
+</div>
+{{#link-to 'raffles.raffle.setup.add-participants' class='ui basic secondary button'}}
+  {{t 'common.edit'}}
+{{/link-to}}
+{{#link-to 'raffles.raffle.setup.index' class='ui primary button'}}
+  {{t 'common.save'}}
+{{/link-to}}

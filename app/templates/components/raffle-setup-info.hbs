@@ -1,6 +1,5 @@
 <div class='ui very padded text container segment'>
   <h1 class='ui header'>
-    <i class='icon em em-memo'></i>
     <div class='content'>
       {{t 'raffleSetupInfo.header' raffleName=raffle.name}}
     </div>
@@ -17,4 +16,7 @@
       {{t 'raffleSetupInfo.addParticipants'}}
     {{/link-to}}
   </h2>
+  {{#link-to 'raffles.raffle.index' class='ui large primary button'}}
+    {{t 'common.save'}}
+  {{/link-to}}
 </div>

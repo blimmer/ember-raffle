@@ -2,6 +2,7 @@ export default {
   "common": {
     "siteName": "ember-raffle",
     "save": "Save",
+    "edit": "Edit",
   },
   "siteHeader": {
     "raffles": "View All Raffles"
@@ -40,5 +41,8 @@ export default {
     "participantsInput": {
       "label": "Participants (one per line)"
     }
+  },
+  "raffleSetupConfirmParticipants": {
+    "header": "Is this everyone?"
   }
 };
