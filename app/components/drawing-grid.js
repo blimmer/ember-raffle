@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
-import { sample } from 'lodash';
+import { round, sampleSize, without } from 'lodash';
 
 export default Ember.Component.extend({
   elementId: 'drawing-grid-component',
@@ -14,8 +14,9 @@ export default Ember.Component.extend({
 
   dropLosers: task(function * () {
     let losers = this.get('losers');
-    let loserToDrop = sample(losers);
-    this.set('losers', losers.without(loserToDrop));
+    let numToDrop = round(this.get('losers.length') * .2 , 0) || 1;
+    let losersToDrop = sampleSize(losers, numToDrop);
+    this.set('losers', without(losers, ...losersToDrop));
 
     yield timeout(1000);
 
