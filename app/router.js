@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('ready-for-drawing');
   this.route('drawing');
   this.route('winners');
+  this.route('setup-drawing');
 });
 
 export default Router;
