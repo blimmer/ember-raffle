@@ -1,25 +1,24 @@
-import { moduleForComponent, skip } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('site-header', 'Integration | Component | site header', {
-  integration: true
-});
+describe('Integration | Component | site header', function() {
+  setupComponentTest('site-header', {
+    integration: true
+  });
 
-skip('it renders', function(assert) {
+  it('renders', function() {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#site-header}}
+    //     template content
+    //   {{/site-header}}
+    // `);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{site-header}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#site-header}}
-      template block text
-    {{/site-header}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+    this.render(hbs`{{site-header}}`);
+    expect(this.$()).to.have.length(1);
+  });
 });

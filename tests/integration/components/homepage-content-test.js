@@ -1,18 +1,24 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
-import { find } from 'ember-native-dom-helpers';
-import testSelector from 'ember-test-selectors';
 
-moduleForComponent('homepage-content', 'Integration | Component | homepage content', {
-  integration: true
-});
+describe('Integration | Component | homepage content', function() {
+  setupComponentTest('homepage-content', {
+    integration: true
+  });
 
-test('it has confetti rain', function(assert) {
-  this.render(hbs`{{homepage-content}}`);
-  assert.ok(find(testSelector('component', 'confetti-rain')));
-});
+  it('renders', function() {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#homepage-content}}
+    //     template content
+    //   {{/homepage-content}}
+    // `);
 
-test('it shows the sitename', function(assert) {
-  this.render(hbs`{{homepage-content}}`);
-  assert.ok(find(testSelector('jumbotron-header'), 'ember-raffle'));
+    this.render(hbs`{{homepage-content}}`);
+    expect(this.$()).to.have.length(1);
+  });
 });

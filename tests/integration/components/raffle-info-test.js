@@ -1,25 +1,24 @@
-import { moduleForComponent, skip } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('raffle-info', 'Integration | Component | raffle info', {
-  integration: true
-});
+describe('Integration | Component | raffle info', function() {
+  setupComponentTest('raffle-info', {
+    integration: true
+  });
 
-skip('it renders', function(assert) {
+  it('renders', function() {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#raffle-info}}
+    //     template content
+    //   {{/raffle-info}}
+    // `);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{raffle-info}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#raffle-info}}
-      template block text
-    {{/raffle-info}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+    this.render(hbs`{{raffle-info}}`);
+    expect(this.$()).to.have.length(1);
+  });
 });

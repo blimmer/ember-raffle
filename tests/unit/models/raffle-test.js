@@ -1,17 +1,22 @@
-import { moduleForModel, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupModelTest } from 'ember-mocha';
 
-moduleForModel('raffle', 'Unit | Model | raffle', {
-  // Specify the other units that are required for this test.
-  needs: [
-    'model:participant',
-    'validator:length',
-    'validator:presence',
-    'validator:number'
-  ]
-});
+describe('Unit | Model | raffle', function() {
+  setupModelTest('raffle', {
+    // Specify the other units that are required for this test.
+    needs: [
+      'model:participant',
+      'validator:length',
+      'validator:presence',
+      'validator:number',
+    ]
+  });
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+  // Replace this with your real tests.
+  it('exists', function() {
+    let model = this.subject();
+    // var store = this.store();
+    expect(model).to.be.ok;
+  });
 });

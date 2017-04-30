@@ -1,25 +1,24 @@
-import { moduleForComponent, skip } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('ready-for-drawing', 'Integration | Component | ready for drawing', {
-  integration: true
-});
+describe('Integration | Component | ready for drawing', function() {
+  setupComponentTest('ready-for-drawing', {
+    integration: true
+  });
 
-skip('it renders', function(assert) {
+  it('renders', function() {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#ready-for-drawing}}
+    //     template content
+    //   {{/ready-for-drawing}}
+    // `);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{ready-for-drawing}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#ready-for-drawing}}
-      template block text
-    {{/ready-for-drawing}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+    this.render(hbs`{{ready-for-drawing}}`);
+    expect(this.$()).to.have.length(1);
+  });
 });

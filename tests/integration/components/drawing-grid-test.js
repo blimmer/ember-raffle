@@ -1,25 +1,24 @@
-import { moduleForComponent, skip } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('drawing-grid', 'Integration | Component | drawing grid', {
-  integration: true
-});
+describe('Integration | Component | drawing grid', function() {
+  setupComponentTest('drawing-grid', {
+    integration: true
+  });
 
-skip('it renders', function(assert) {
+  it.skip('renders', function() {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#drawing-grid}}
+    //     template content
+    //   {{/drawing-grid}}
+    // `);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{drawing-grid}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#drawing-grid}}
-      template block text
-    {{/drawing-grid}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+    this.render(hbs`{{drawing-grid}}`);
+    expect(this.$()).to.have.length(1);
+  });
 });
