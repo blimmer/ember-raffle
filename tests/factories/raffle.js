@@ -5,7 +5,7 @@ FactoryGuy.define('raffle', {
   default: {},
   traits: {
     withParticipants: {
-      participants: FactoryGuy.hasMany('participants', 2)
+      participants: FactoryGuy.hasMany('participant', 2)
     },
     finished: {
       drawingEndTime: () => moment().subtract(2, 'days').toDate()

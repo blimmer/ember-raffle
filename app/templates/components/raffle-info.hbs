@@ -13,13 +13,13 @@
       {{winner-card winner=winner}}
     {{/each}}
   {{else}}
-    <h2 class='ui header'>
+    <h2 data-test-setup-header class='ui header'>
       <i class='icon em em-memo'></i>
       {{#link-to 'raffles.raffle.setup' raffle class='content'}}
         {{t 'raffleInfo.setup'}}
       {{/link-to}}
     </h2>
-    <h2 class='ui header'>
+    <h2 data-test-ready-for-drawing-header class='ui header'>
       <i class='icon em em-zap'></i>
       {{#link-to
         'raffles.raffle.ready-for-drawing'
