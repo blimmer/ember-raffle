@@ -13,7 +13,7 @@
       {{/light-table}}
     </div>
   {{else}}
-    <h1 class='ui header'>
+    <h1 data-test-empty-state class='ui header'>
       <i class='icon em em-wave'></i>
       <div class='content'>
         {{t 'raffleList.emptyState'}}
@@ -24,6 +24,7 @@
     </h1>
   {{/if}}
   <button
+    data-test-create-new-raffle-button
     class='ui large primary button'
     onclick={{action createNewRaffle}}>{{t 'raffleList.createCta'}}</button>
 </div>
