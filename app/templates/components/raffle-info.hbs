@@ -1,12 +1,12 @@
 <div class='ui very padded text container segment'>
   <h1 class='ui header'>
-    <div class='content'>
+    <div data-test-raffle-name class='content'>
       {{raffle.name}}
     </div>
   </h1>
 
   {{#if raffle.drawingComplete}}
-    <h2 class='ui header'>
+    <h2 data-test-completed-header class='ui header'>
       {{t 'raffleInfo.completed.header'}}
     </h2>
     {{#each raffle.winners as |winner|}}
