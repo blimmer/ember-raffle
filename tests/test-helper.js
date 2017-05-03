@@ -8,12 +8,12 @@ setResolver(resolver);
 before(function() {
   // There has got to be a better way!
   // https://github.com/simplabs/ember-test-selectors/issues/106
-  let realEmberWarn = Ember.warn;
-  Ember.warn = function(_1, _2, opts) {
-    if (Ember.get(opts, 'id') !== "ember-test-selectors.empty-tag-name") {
-      realEmberWarn(...arguments);
-    }
-  }
+  //let realEmberWarn = Ember.warn;
+  //Ember.warn = function(_1, _2, opts) {
+  //  if (Ember.get(opts, 'id') !== "ember-test-selectors.empty-tag-name") {
+  //    realEmberWarn(...arguments);
+  //  }
+  //}
   let ComponentTestingMixin = Ember.Mixin.create({
     'data-test-component': Ember.computed(function() {
       let [, componentName] = this._debugContainerKey.replace(/\//g, '-').split(':');
