@@ -1,8 +1,1 @@
-{{#ember-wormhole to='fullscreen-confetti'}}
-  {{confetti-rain}}
-{{/ember-wormhole}}
-
-<h1 class='ui center aligned content container'>{{t 'winners.header' count=model.winners.length}}</h1>
-{{#each model.winners as |winner|}}
-  {{winner-card winner=winner}}
-{{/each}}
+{{winner-list winners=model.winners}}
