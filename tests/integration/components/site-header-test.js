@@ -2,23 +2,25 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers';
+import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | site header', function() {
   setupComponentTest('site-header', {
     integration: true
   });
 
-  it('renders', function() {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.on('myAction', function(val) { ... });
-    // Template block usage:
-    // this.render(hbs`
-    //   {{#site-header}}
-    //     template content
-    //   {{/site-header}}
-    // `);
-
+  function render() {
     this.render(hbs`{{site-header}}`);
-    expect(this.$()).to.have.length(1);
+  }
+
+  it('has a link to the homepage', function() {
+    render.call(this);
+    expect(find(testSelector('selector', 'global-homepage-link'))).to.be.ok;
+  });
+
+  it('has a link to the raffles index', function() {
+    render.call(this);
+    expect(find(testSelector('selector', 'global-raffles-link'))).to.be.ok;
   });
 });
