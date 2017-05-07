@@ -24,6 +24,8 @@ export default Ember.Component.extend({
     let losersToDrop = sampleSize(losers, numToDrop);
     this.set('losers', without(losers, ...losersToDrop));
 
+    if (Ember.testing) { return; }
+
     yield timeout(1000);
 
     if (this.get('losers.length') > 0) {
