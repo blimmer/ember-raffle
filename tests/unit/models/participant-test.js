@@ -11,10 +11,17 @@ describe('Unit | Model | participant', function() {
     ]
   });
 
-  // Replace this with your real tests.
-  it('exists', function() {
-    let model = this.subject();
-    // var store = this.store();
-    expect(model).to.be.ok;
+  describe('validations', function() {
+    describe('name', function() {
+      it('is invalid without a name', function() {
+        let model = this.subject({ name: null });
+        expect(model.get('validations.attrs.name.isValid')).to.be.false;
+      });
+
+      it('is valid when a name is present', function() {
+        let model = this.subject({ name: 'Lucky Ducky' });
+        expect(model.get('validations.attrs.name.isValid')).to.be.true;
+      });
+    });
   });
 });

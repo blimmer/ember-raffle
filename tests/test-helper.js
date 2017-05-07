@@ -2,6 +2,7 @@ import Ember from 'ember';
 import resolver from './helpers/resolver';
 import { setResolver } from 'ember-mocha';
 import { before, afterEach } from 'mocha';
+import sinon from 'sinon';
 
 setResolver(resolver);
 
@@ -21,8 +22,11 @@ before(function() {
     })
   });
   Ember.Component.reopen(ComponentTestingMixin);
+
+  this.sandbox = sinon.sandbox.create();
 });
 
 afterEach(function() {
+  this.sandbox.restore();
   localStorage.removeItem('raffle') // clear all models
 });
