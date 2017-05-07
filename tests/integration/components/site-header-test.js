@@ -1,25 +1,26 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers';
+import testSelector from 'ember-test-selectors';
 
-moduleForComponent('site-header', 'Integration | Component | site header', {
-  integration: true
-});
+describe('Integration | Component | site header', function() {
+  setupComponentTest('site-header', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  function render() {
+    this.render(hbs`{{site-header}}`);
+  }
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  it('has a link to the homepage', function() {
+    render.call(this);
+    expect(find(testSelector('selector', 'global-homepage-link'))).to.be.ok;
+  });
 
-  this.render(hbs`{{site-header}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#site-header}}
-      template block text
-    {{/site-header}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  it('has a link to the raffles index', function() {
+    render.call(this);
+    expect(find(testSelector('selector', 'global-raffles-link'))).to.be.ok;
+  });
 });

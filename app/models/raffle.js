@@ -9,8 +9,15 @@ const Validations = buildValidations({
   numberOfWinners: validator('number', {
     allowString: true,
     integer: true,
-    min: 1,
-    max: Ember.computed.readOnly('model.participants.length'),
+    gt: 0,
+    lte: Ember.computed('model.participants.[]', function() {
+      let participantCount = this.get('model.participants.length');
+      if (participantCount === 0) {
+        return Infinity;
+      } else {
+        return participantCount;
+      }
+    }),
   }),
 });
 

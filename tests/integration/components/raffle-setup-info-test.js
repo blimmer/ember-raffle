@@ -1,25 +1,48 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it, beforeEach } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers';
+import { make, manualSetup } from 'ember-data-factory-guy';
+import testSelector from 'ember-test-selectors';
 
-moduleForComponent('raffle-setup-info', 'Integration | Component | raffle setup info', {
-  integration: true
-});
+describe('Integration | Component | raffle setup info', function() {
+  setupComponentTest('raffle-setup-info', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  beforeEach(function() {
+    manualSetup(this.container);
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  function render() {
+    if (!this.get('raffle')) {
+      this.set('raffle', make('raffle'));
+    }
 
-  this.render(hbs`{{raffle-setup-info}}`);
+    this.render(hbs`
+      {{raffle-setup-info raffle=raffle}}
+    `);
+  }
 
-  assert.equal(this.$().text().trim(), '');
+  it('shows the raffle name in the header', function() {
+    this.set('raffle', make('raffle', { name: 'My Raffle' }));
+    render.call(this);
+    expect(find(testSelector('header')).textContent.trim()).to.equal('Setup My Raffle');
+  });
 
-  // Template block usage:
-  this.render(hbs`
-    {{#raffle-setup-info}}
-      template block text
-    {{/raffle-setup-info}}
-  `);
+  it('has a link to settings', function() {
+    render.call(this);
+    expect(find(testSelector('settings-header') + ' a')).to.be.ok;
+  });
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  it('has a link to add participants', function() {
+    render.call(this);
+    expect(find(testSelector('add-participants-header') + ' a')).to.be.ok;
+  });
+
+  it('has a save button', function() {
+    render.call(this);
+    expect(find('.large.primary.button')).to.be.ok;
+  });
 });

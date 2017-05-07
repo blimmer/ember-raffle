@@ -1,25 +1,83 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it, beforeEach } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers';
+import { make, makeList, manualSetup } from 'ember-data-factory-guy';
+import testSelector from 'ember-test-selectors';
 
-moduleForComponent('ready-for-drawing', 'Integration | Component | ready for drawing', {
-  integration: true
-});
+describe('Integration | Component | ready for drawing', function() {
+  setupComponentTest('ready-for-drawing', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  beforeEach(function() {
+    manualSetup(this.container);
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  function render() {
+    if (!this.get('raffle')) {
+      this.set('raffle', make('raffle'));
+    }
 
-  this.render(hbs`{{ready-for-drawing}}`);
+    this.render(hbs`
+      {{ready-for-drawing raffle=raffle}}
+    `);
+  }
 
-  assert.equal(this.$().text().trim(), '');
+  it('has a header', function() {
+    render.call(this);
+    expect(find(testSelector('header')).textContent.trim()).to.equal(`We're all set to draw winners for ${this.get('raffle.name')}!`);
+  });
 
-  // Template block usage:
-  this.render(hbs`
-    {{#ready-for-drawing}}
-      template block text
-    {{/ready-for-drawing}}
-  `);
+  describe('participant count', function() {
+    it('shows the number of participants', function() {
+      this.set('raffle', make('raffle', { participants: makeList('participant', 3) }));
+      render.call(this);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+      expect(find(testSelector('number-of-participants')).textContent.trim()).to.include('3');
+    });
+
+    it('has a singular label for one participant', function() {
+      this.set('raffle', make('raffle', { participants: makeList('participant', 1) }));
+      render.call(this);
+
+      expect(find(testSelector('number-of-participants')).textContent.trim()).to.include('participant');
+    });
+
+    it('has a pluralized label for more than more participant', function() {
+      this.set('raffle', make('raffle', { participants: makeList('participant', 2) }));
+      render.call(this);
+
+      expect(find(testSelector('number-of-participants')).textContent.trim()).to.include('participants');
+    });
+  });
+
+  describe('winner count', function() {
+    it('shows the number of winners', function() {
+      this.set('raffle', make('raffle', 'withParticipants', { numberOfWinners: 1 }));
+      render.call(this);
+
+      expect(find(testSelector('number-of-winners')).textContent.trim()).to.include('1');
+    });
+
+    it('has a singular label for one winner', function() {
+      this.set('raffle', make('raffle', 'withParticipants', { numberOfWinners: 1 }));
+      render.call(this);
+
+      expect(find(testSelector('number-of-winners')).textContent.trim()).to.include('winner');
+    });
+
+    it('has a pluralized label for more than more participant', function() {
+      this.set('raffle', make('raffle', 'withParticipants', { numberOfWinners: 2 }));
+      render.call(this);
+
+      expect(find(testSelector('number-of-winners')).textContent.trim()).to.include('winners');
+    });
+  });
+
+  it('has a link to start the drawing', function() {
+    render.call(this);
+    expect(find('.button.primary')).to.be.ok;
+  });
 });

@@ -1,25 +1,59 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it, beforeEach } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers';
+import { makeList, manualSetup } from 'ember-data-factory-guy';
+import testSelector from 'ember-test-selectors';
 
-moduleForComponent('raffle-setup-confirm-participants', 'Integration | Component | raffle setup confirm participants', {
-  integration: true
-});
+describe('Integration | Component | raffle setup confirm participants', function() {
+  setupComponentTest('raffle-setup-confirm-participants', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  beforeEach(function() {
+    manualSetup(this.container);
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  function render() {
+    this.render(hbs`
+      {{raffle-setup-confirm-participants participants=participants}}
+    `);
+  }
 
-  this.render(hbs`{{raffle-setup-confirm-participants}}`);
+  describe('content', function() {
+    beforeEach(function() {
+      render.call(this);
+    });
+    it('has a header', function() {
+      expect(find(testSelector('confirm-participants-header')).textContent.trim()).to.equal("Is this everyone?");
+    });
 
-  assert.equal(this.$().text().trim(), '');
+    it('has a table', function() {
+      expect(find('table')).to.be.ok;
+    });
+  });
 
-  // Template block usage:
-  this.render(hbs`
-    {{#raffle-setup-confirm-participants}}
-      template block text
-    {{/raffle-setup-confirm-participants}}
-  `);
+  describe('table', function() {
+    beforeEach(function() {
+      this.set('participants', makeList('participant', 2));
+      render.call(this);
+    });
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    it('show the participants names', function() {
+      let participants = this.get('participants');
+      expect(find('.lt-body').textContent).to.include(participants.get('firstObject.name'));
+      expect(find('.lt-body').textContent).to.include(participants.get('lastObject.name'));
+    });
+  });
+
+  it('has an edit button', function() {
+    render.call(this);
+    expect(find(testSelector('link', 'confirm-participants'))).to.be.ok;
+  });
+
+  it('has a confirm link', function() {
+    render.call(this);
+    expect(find(testSelector('link', 'confirm-participants'))).to.be.ok;
+  });
 });

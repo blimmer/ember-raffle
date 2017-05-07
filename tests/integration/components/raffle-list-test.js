@@ -1,25 +1,102 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import Ember from 'ember';
+import { expect } from 'chai';
+import { describe, it, context, beforeEach } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import testSelector from 'ember-test-selectors';
+import { click, find, findAll } from 'ember-native-dom-helpers';
+import { make, manualSetup } from 'ember-data-factory-guy';
 
-moduleForComponent('raffle-list', 'Integration | Component | raffle list', {
-  integration: true
-});
+describe('Integration | Component | raffle list', function() {
+  setupComponentTest('raffle-list', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  function render() {
+    if (!this.get('createNewRaffle')) {
+      this.set('createNewRaffle', () => { });
+    }
+    this.render(hbs`
+      {{raffle-list
+        raffles=raffles
+        viewRaffle=viewRaffle
+        createNewRaffle=createNewRaffle}}
+    `);
+  }
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  it('has a button to create a new raffle', function() {
+    render.call(this);
+    expect(find(testSelector('create-new-raffle-button'))).to.be.ok;
+  });
 
-  this.render(hbs`{{raffle-list}}`);
+  it('fires the create new raffle action when clicking the new button', async function(done) {
+    this.set('createNewRaffle', () => {
+      done();
+    });
 
-  assert.equal(this.$().text().trim(), '');
+    render.call(this);
+    await click(testSelector('create-new-raffle-button'));
+  });
 
-  // Template block usage:
-  this.render(hbs`
-    {{#raffle-list}}
-      template block text
-    {{/raffle-list}}
-  `);
+  context('no raffles created', function() {
+    it('shows a message intended for new users', function() {
+      render.call(this);
+      expect(find(testSelector('empty-state')).textContent).to.include("Hi! Looks like you're new here.")
+    });
+  });
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  context('with raffles previously created', function() {
+    let unfinishedRaffle, finishedRaffle;
+    beforeEach(function() {
+      manualSetup(this.container);
+      unfinishedRaffle = make('raffle');
+      finishedRaffle = make('raffle', 'finished');
+      this.set('raffles', Ember.A([unfinishedRaffle, finishedRaffle]));
+    });
+
+    describe('table', function() {
+      beforeEach(function() {
+        render.call(this);
+      });
+      it('has the expected columns', function() {
+        let headers = findAll('thead th');
+        expect(headers).to.have.length(2);
+        expect(headers[0].textContent.trim()).to.equal('Name');
+        expect(headers[1].textContent.trim()).to.equal('Finished?');
+      });
+
+      it('lists the raffle names', function() {
+        let nameCells = findAll('tbody tr td:first-of-type');
+        expect(nameCells[0].textContent.trim()).to.equal(unfinishedRaffle.get('name'));
+        expect(nameCells[1].textContent.trim()).to.equal(finishedRaffle.get('name'));
+      });
+
+      it('lists the raffle completion status', function() {
+        let finishedCells = findAll('tbody tr td:last-of-type');
+        expect(finishedCells[0].textContent.trim()).to.equal('false');
+        expect(finishedCells[1].textContent.trim()).to.equal('true');
+      });
+    });
+
+    describe('clicking a row', function() {
+      it('fires the view raffle action', async function(done) {
+        this.set('viewRaffle', () => {
+          done();
+        });
+        render.call(this);
+
+        await click('tbody tr:first-of-type');
+      });
+
+      it('includes the raffle clicked in the action call', async function(done) {
+        this.set('viewRaffle', (raffleClicked) => {
+          expect(raffleClicked).to.equal(unfinishedRaffle);
+          done();
+        });
+        render.call(this);
+
+        await click('tbody tr:first-of-type');
+      });
+    });
+  });
 });

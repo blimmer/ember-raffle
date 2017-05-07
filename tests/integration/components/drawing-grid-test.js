@@ -1,25 +1,46 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it, beforeEach } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
+import { find } from 'ember-native-dom-helpers';
+import { make, makeList, manualSetup } from 'ember-data-factory-guy';
+import testSelector from 'ember-test-selectors';
 
-moduleForComponent('drawing-grid', 'Integration | Component | drawing grid', {
-  integration: true
-});
+describe('Integration | Component | drawing grid', function() {
+  setupComponentTest('drawing-grid', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  beforeEach(function() {
+    manualSetup(this.container);
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  function render() {
+    if (!this.get('winners')) {
+      this.set('winners', [make('participant')]);
+    }
 
-  this.render(hbs`{{drawing-grid}}`);
+    if (!this.get('losers')) {
+      this.set('losers', makeList('participant', 2));
+    }
 
-  assert.equal(this.$().text().trim(), '');
+    this.render(hbs`
+      {{drawing-grid winners=winners losers=losers  }}
+    `);
+  }
 
-  // Template block usage:
-  this.render(hbs`
-    {{#drawing-grid}}
-      template block text
-    {{/drawing-grid}}
-  `);
+  it('shows all participants in a grid', function() {
+    let participants = makeList('participant', 3);
+    this.set('winners', participants.slice(0));
+    this.set('losers', participants.slice(1,2));
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    render.call(this);
+
+    participants.forEach((participant) => {
+      expect(find(testSelector('participant-id', participant.get('id')))).to.be.ok;
+    });
+  });
+
+  it.skip('pulls losers from the board');
+  it.skip('calls the showWinners action when all losers have been pulled from the board');
 });

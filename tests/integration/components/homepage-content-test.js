@@ -1,25 +1,24 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { expect } from 'chai';
+import { describe, it } from 'mocha';
+import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('homepage-content', 'Integration | Component | homepage content', {
-  integration: true
-});
+describe('Integration | Component | homepage content', function() {
+  setupComponentTest('homepage-content', {
+    integration: true
+  });
 
-test('it renders', function(assert) {
+  it('renders', function() {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    // Template block usage:
+    // this.render(hbs`
+    //   {{#homepage-content}}
+    //     template content
+    //   {{/homepage-content}}
+    // `);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{homepage-content}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#homepage-content}}
-      template block text
-    {{/homepage-content}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+    this.render(hbs`{{homepage-content}}`);
+    expect(this.$()).to.have.length(1);
+  });
 });

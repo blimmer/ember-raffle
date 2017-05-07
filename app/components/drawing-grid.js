@@ -3,17 +3,12 @@ import { task, timeout } from 'ember-concurrency';
 import { round, sampleSize, without } from 'lodash';
 
 export default Ember.Component.extend({
-  winners: null,
-  losers: null,
   init() {
     this._super(...arguments);
 
-    let raffle = this.get('raffle');
-    this.setProperties({
-      winners: raffle.get('winners'),
-      losers: raffle.get('losers'),
-    });
-    this.get('dropLosers').perform();
+    if (!Ember.testing) {
+      this.get('dropLosers').perform();
+    }
   },
 
   currentParticipants: Ember.computed.union('winners', 'losers'),

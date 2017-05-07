@@ -2,7 +2,9 @@
 <div class='ui segments'>
   <div class='ui inverted masthead center aligned segment'>
     <div class='ui container'>
-      <h1 class='ui inverted header'>{{t 'common.siteName'}}</h1>
+      <h1
+        data-test-jumbotron-header
+        class='ui inverted header'>{{t 'common.siteName'}}</h1>
     </div>
   </div>
   <div class='ui vertical stripe segment why'>
@@ -18,9 +20,9 @@
       </div>
     </div>
   </div>
-  <div class='ui vertical stripe segment get-started'>
+  <div data-test-get-started-segment class='ui vertical stripe segment get-started'>
     <div class='ui center aligned text container'>
-      {{#link-to 'raffles' class='ui button massive primary'}}
+      {{#link-to 'raffles.index' class='ui button massive primary'}}
         {{t 'homepageContent.stripes.getStarted.cta'}}
       {{/link-to}}
     </div>

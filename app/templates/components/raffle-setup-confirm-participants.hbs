@@ -1,4 +1,6 @@
-<h1 class='ui header'>{{t 'raffleSetupConfirmParticipants.header'}}</h1>
+<h1
+  data-test-confirm-participants-header
+  class='ui header'>{{t 'raffleSetupConfirmParticipants.header'}}</h1>
 <div class='ui celled table'>
   {{#light-table
     table
@@ -7,9 +9,15 @@
     {{t.body}}
   {{/light-table}}
 </div>
-{{#link-to 'raffles.raffle.setup.add-participants' class='ui basic secondary button'}}
+{{#link-to
+    'raffles.raffle.setup.add-participants'
+    class='ui basic secondary button'
+    data-test-link='add-participants'}}
   {{t 'common.edit'}}
 {{/link-to}}
-{{#link-to 'raffles.raffle.setup.index' class='ui primary button'}}
+{{#link-to
+    'raffles.raffle.setup.index'
+    class='ui primary button'
+    data-test-link='confirm-participants'}}
   {{t 'common.save'}}
 {{/link-to}}
