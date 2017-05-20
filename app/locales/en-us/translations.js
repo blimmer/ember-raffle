@@ -4,6 +4,9 @@ export default {
     "save": "Save",
     "edit": "Edit",
   },
+  "adapter": {
+    "localstorageDisabled": "WARNING: localstorage is disabled. Your data will not be persisted.",
+  },
   "siteHeader": {
     "raffles": "View All Raffles"
   },
