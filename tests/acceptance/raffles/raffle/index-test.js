@@ -42,4 +42,9 @@ describe('Acceptance | raffles/raffle/index', function() {
     await click(`${testSelector('ready-for-drawing-header')} a`);
     expect(currentURL()).to.equal(`/raffles/${raffle.id}/ready-for-drawing`);
   });
+
+  it('returns to the raffles index accessing a raffle that does not exist', async function() {
+    await visit('/raffles/does-not-exist');
+    expect(currentURL()).to.equal('/raffles');
+  });
 });
