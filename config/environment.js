@@ -47,7 +47,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.rootURL = '/ember-raffle';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
