@@ -72,7 +72,11 @@ export default {
     "stripes": {
       "why": {
         "header": "You need to run a raffle.",
-        "para": "I made a raffle app. It's even free. I mean, c'mon, it doesn't get better than this."
+        "para": "I made a raffle app. It's even free!"
+      },
+      "who": {
+        "header": "Meet the Author",
+        "para": "Learn more about <a href='https://benlimmer.com/about' target='_blank' rel='noopener noreferrer'>Ben Limmer</a>."
       },
       "getStarted": {
         "cta": "Get Started"
