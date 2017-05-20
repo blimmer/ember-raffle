@@ -1,11 +1,13 @@
 export default function() {
   this.transition(
-    this.toRoute(['confirm-participants', 'ready-for-drawing']),
-    this.use('toLeft')
+    this.fromRoute('index'),
+    this.toRoute('raffles'),
+    this.use('fade')
   );
 
   this.transition(
-    this.toRoute('drawing'),
-    this.use('fade', { duration: 750 })
+    this.fromRoute('raffles.raffle.ready-for-drawing'),
+    this.toRoute('raffles.raffle.run-drawing'),
+    this.use('fade')
   );
 }
