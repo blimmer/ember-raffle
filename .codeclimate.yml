@@ -1,0 +1,29 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        scss:
+        javascript:
+          mass_threshold: 50 # Ember isn't super DRY as a framework
+    exclude_paths:
+      - 'app/router.js'
+      - 'app/locales/**/*.js'
+  fixme:
+    enabled: true
+  # scss-lint:
+  #   enabled: true
+  eslint:
+    enabled: true
+    channel: "eslint-3"
+    config:
+      ignore_warnings: true
+ratings:
+  paths:
+  - "**.js"
+  - "**.scss"
+exclude_paths:
+- config/
+- tests/
+- vendor/
