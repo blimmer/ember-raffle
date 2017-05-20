@@ -7,15 +7,15 @@
         class='ui inverted header'>{{t 'common.siteName'}}</h1>
     </div>
   </div>
-  <div class='ui vertical stripe segment why'>
-    <div class='ui middle aligned stackable grid container'>
+  <div data-test-why-segment class='ui vertical stripe segment why'>
+    <div class='ui centered middle aligned grid container'>
       <div class='eight wide column'>
         <h3 class='ui header'>{{t 'homepageContent.stripes.why.header'}}</h3>
         <p>
           {{t 'homepageContent.stripes.why.para'}}
         </p>
       </div>
-      <div class='right floated left aligned four wide column'>
+      <div class='two wide column'>
         <i class='em em-tada'></i>
       </div>
     </div>
@@ -25,6 +25,20 @@
       {{#link-to 'raffles.index' class='ui button massive primary'}}
         {{t 'homepageContent.stripes.getStarted.cta'}}
       {{/link-to}}
+    </div>
+  </div>
+  <div data-test-shamless-self-promotion-segment class='ui vertical stripe segment who'>
+    <div class='ui centered middle aligned grid container'>
+      <div class='four wide column'>
+        <img src='https://gravatar.com/avatar/7cd754c2a0e4eef5c441536eca55055e?s=200' >
+      </div>
+      <div class='one wide column'></div>
+      <div class='six wide column'>
+        <h3 class='ui header'>{{t 'homepageContent.stripes.who.header'}}</h3>
+        <p>
+          {{t 'homepageContent.stripes.who.para'}}
+        </p>
+      </div>
     </div>
   </div>
 </div>
