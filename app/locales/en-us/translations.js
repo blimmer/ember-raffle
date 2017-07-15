@@ -83,5 +83,18 @@ export default {
         "cta": "Get Started"
       }
     }
-  }
+  },
+  "raffleExport": {
+    "textFileTemplate": `# {{raffleName}}
+Drawing had {{numParticipants}} participants, with {{numWinners}} winners.
+Winners were picked on {{drawingEndTime}}.
+
+# Winners
+{{winners}}
+
+# All Participants
+{{participants}}
+    `,
+    "download": "Download Results"
+  },
 };
