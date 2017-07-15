@@ -34,10 +34,12 @@ export default DS.Model.extend(Validations, {
 
   drawingComplete: Ember.computed.bool('drawingEndTime'),
   losers: Ember.computed('winners.[]', function() {
-    let winners = this.get('winners');
+    let winners = this.get('winners').toArray();
     if (Ember.get(winners, 'length') > 0) {
-      let participants = this.get('participants');
-      return participants.without(winners);
+      let participants = this.get('participants').toArray();
+      return Ember.A(participants.reject(function(participant) {
+        return winners.includes(participant);
+      }));
     } else {
       return Ember.A([]);
     }
