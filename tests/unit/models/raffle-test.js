@@ -34,8 +34,7 @@ describe('Unit | Model | raffle', function() {
 
   describe('losers', function() {
     context('when winners are chosen', function() {
-      // .without seems to not like this - need to figure it out
-      it.skip('is the participants without the winners', function() {
+      it('is the participants without the winners', function() {
         let participants = makeList('participant', 3);
         let model = this.subject({
           participants,
@@ -44,7 +43,7 @@ describe('Unit | Model | raffle', function() {
 
         let losers = model.get('losers');
         expect(losers.get('length')).to.equal(2);
-        expect(losers).to.not.include(participants[0]);
+        expect(losers.mapBy('id')).to.not.include(participants[0].id);
       });
     });
 
