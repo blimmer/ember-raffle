@@ -1,7 +1,7 @@
-<div class='ui very padded text container segment'>
+<div class='ui very padded attached text container segment'>
   {{#if (gt raffles.length 0)}}
     <h1 class='ui header'>
-      <i class='icon em em-bulb'></i>
+      <i class='icon em em-sparkles'></i>
       <div class='content'>
         {{t 'raffleList.header'}}
       </div>
@@ -28,3 +28,11 @@
     class='ui large primary button'
     onclick={{action createNewRaffle}}>{{t 'raffleList.createCta'}}</button>
 </div>
+{{#if (gt raffles.length 0)}}
+  <div
+    class='ui attached center aligned container segment tip-text'
+    data-test-localstorage-reminder>
+    <i class='em em-bulb'></i>
+    {{t 'raffleList.localstorageReminder'}}
+  </div>
+{{/if}}
