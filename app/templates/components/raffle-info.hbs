@@ -12,6 +12,7 @@
     {{#each raffle.winners as |winner|}}
       {{winner-card winner=winner}}
     {{/each}}
+    {{raffle-export raffle=raffle}}
   {{else}}
     <h2 data-test-setup-header class='ui header'>
       <i class='icon em em-memo'></i>

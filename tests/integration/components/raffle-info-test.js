@@ -39,6 +39,10 @@ describe('Integration | Component | raffle info', function() {
     it('has a tooltip explaining why the link is disabled', function() {
       expect(find(`${testSelector('ready-for-drawing-header')} a.disabled`).title).to.equal('Please complete setup to enable this action');
     });
+
+    it('does not show the raffle export button', function() {
+      expect(find(testSelector('component', 'raffle-export'))).to.be.null;
+    });
   });
 
   context('completely setup raffle', function() {
@@ -50,6 +54,10 @@ describe('Integration | Component | raffle info', function() {
     it('has an enabled link to ready-for-drawing', function() {
       expect(find(`${testSelector('ready-for-drawing-header')} a`)).to.be.ok;
       expect(find(`${testSelector('ready-for-drawing-header')} a.disabled`)).to.not.be.ok;
+    });
+
+    it('does not show the raffle export button', function() {
+      expect(find(testSelector('component', 'raffle-export'))).to.be.null;
     });
   });
 
@@ -73,6 +81,10 @@ describe('Integration | Component | raffle info', function() {
 
     it('does not show the ready-for-drawing link', function() {
       expect(find(testSelector('ready-for-drawing-header'))).to.not.be.ok;
+    });
+
+    it('shows the raffle export button', function() {
+      expect(find(testSelector('component', 'raffle-export'))).to.be.ok;
     });
   });
 });
