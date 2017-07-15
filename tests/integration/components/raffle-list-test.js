@@ -102,7 +102,10 @@ describe('Integration | Component | raffle list', function() {
     describe('localstorage reminder', function() {
       it('shows a warning that all data is local to this computer', function() {
         render.call(this);
-        expect(find(testSelector('localstorage-reminder')).textContent).to.include("only stored on this computer")
+
+        let helpText = find(testSelector('localstorage-reminder')).textContent;
+        expect(helpText).to.include("stored on this computer");
+        expect(helpText).to.include("save the results");
       });
     })
   });
