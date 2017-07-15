@@ -98,5 +98,12 @@ describe('Integration | Component | raffle list', function() {
         await click('tbody tr:first-of-type');
       });
     });
+
+    describe('localstorage reminder', function() {
+      it('shows a warning that all data is local to this computer', function() {
+        render.call(this);
+        expect(find(testSelector('localstorage-reminder')).textContent).to.include("only stored on this computer")
+      });
+    })
   });
 });

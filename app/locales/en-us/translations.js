@@ -14,7 +14,8 @@ export default {
     "emptyState": "Hi! Looks like you're new here.",
     "emptyStateDescription": "This is the dashboard for all your raffles. Why don't you create one?",
     "createCta": "Create a New Raffle",
-    "header": "Your Raffles"
+    "header": "Your Raffles",
+    "localstorageReminder": "Did you know? All raffle information is only stored on this computer."
   },
   "raffleInfo": {
     "setup": 'Setup',
