@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import startApp from 'raffle/tests/helpers/start-app';
 import destroyApp from 'raffle/tests/helpers/destroy-app';
 import { visit, click, find } from 'ember-native-dom-helpers';
-import testSelector from 'ember-test-selectors';
 
 describe('Acceptance | index', function() {
   let application;
@@ -23,12 +22,12 @@ describe('Acceptance | index', function() {
 
   it('it renders the homepage content module', async function() {
     await visit('/');
-    expect(find(testSelector('component', 'homepage-content'))).to.be.ok;
+    expect(find('[data-test-component="homepage-content"]')).to.be.ok;
   });
 
   it('it has a link to the raffles list from the homepage', async function() {
     await visit('/');
-    await click(`${testSelector('get-started-segment')} .button`);
+    await click(`${'[data-test-get-started-segment]'} .button`);
     expect(currentURL()).to.equal('/raffles');
   });
 });

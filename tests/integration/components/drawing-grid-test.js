@@ -4,7 +4,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers';
 import { make, makeList, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | drawing grid', function() {
   setupComponentTest('drawing-grid', {
@@ -37,7 +36,7 @@ describe('Integration | Component | drawing grid', function() {
     render.call(this);
 
     participants.forEach((participant) => {
-      expect(find(testSelector('participant-id', participant.get('id')))).to.be.ok;
+      expect(find(`[data-test-participant-id="${participant.id}"]`)).to.be.ok;
     });
   });
 

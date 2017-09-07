@@ -4,7 +4,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers';
 import { make, makeList, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 import moment from 'moment';
 
 describe('Integration | Component | raffle export', function() {
@@ -32,47 +31,47 @@ describe('Integration | Component | raffle export', function() {
     it('renders a link', function() {
       render.call(this);
 
-      expect(find(testSelector('download-button')).tagName).to.equal('A');
+      expect(find('[data-test-download-button]').tagName).to.equal('A');
     });
 
     describe('text content', function() {
       it('is a plain-text file', function() {
         render.call(this);
 
-        expect(find(testSelector('download-button')).href).to.include('data:text/plain;');
+        expect(find('[data-test-download-button]').href).to.include('data:text/plain;');
       });
 
       it('is utf-8 encoded', function() {
         render.call(this);
 
-        expect(find(testSelector('download-button')).href).to.include('charset=utf-8');
+        expect(find('[data-test-download-button]').href).to.include('charset=utf-8');
       });
 
       it('is URL safe', function() {
         this.set('raffle', make('raffle', { name: 'Something with spaces'}));
         render.call(this);
-        expect(find(testSelector('download-button')).href).to.include(urlEncoded(' '));
+        expect(find('[data-test-download-button]').href).to.include(urlEncoded(' '));
       });
 
       it('includes the raffle name', function() {
         this.set('raffle', make('raffle', { name: 'My Raffle'}));
         render.call(this);
 
-        expect(find(testSelector('download-button')).href).to.include(urlEncoded('My Raffle'));
+        expect(find('[data-test-download-button]').href).to.include(urlEncoded('My Raffle'));
       });
 
       it('includes the number of participants', function() {
         this.set('raffle', make('raffle', { participants: makeList('participant', 3) }));
         render.call(this);
 
-        expect(find(testSelector('download-button')).href).to.include(urlEncoded('had 3 participants'));
+        expect(find('[data-test-download-button]').href).to.include(urlEncoded('had 3 participants'));
       });
 
       it('includes the number of winners', function() {
         this.set('raffle', make('raffle', 'finished', { winners: makeList('participant', 2) }));
         render.call(this);
 
-        expect(find(testSelector('download-button')).href).to.include(urlEncoded('2 winners'));
+        expect(find('[data-test-download-button]').href).to.include(urlEncoded('2 winners'));
       });
 
       it('includes the drawing time', function() {
@@ -81,7 +80,7 @@ describe('Integration | Component | raffle export', function() {
         }));
         render.call(this);
 
-        expect(find(testSelector('download-button')).href).to.include(urlEncoded(this.get('raffle.drawingEndTime')));
+        expect(find('[data-test-download-button]').href).to.include(urlEncoded(this.get('raffle.drawingEndTime')));
       });
 
       it('lists all the winners', function() {
@@ -96,7 +95,7 @@ describe('Integration | Component | raffle export', function() {
         }));
         render.call(this);
 
-        let textContent = find(testSelector('download-button')).href;
+        let textContent = find('[data-test-download-button]').href;
         expect(textContent).to.include(urlEncoded('# Winners\n\nLucky Ducky 1\nLucky Ducky 2'));
       });
 
@@ -116,7 +115,7 @@ describe('Integration | Component | raffle export', function() {
         }));
         render.call(this);
 
-        let textContent = find(testSelector('download-button')).href;
+        let textContent = find('[data-test-download-button]').href;
         expect(textContent).to.include(urlEncoded('# All Participants\n\nLucky Ducky 1\nParticipant 2\nParticipant 3'));
       });
     });
@@ -126,13 +125,13 @@ describe('Integration | Component | raffle export', function() {
         this.set('raffle', make('raffle', 'finished', { name: 'My Awesome Raffle' }));
         render.call(this);
 
-        expect(find(testSelector('download-button')).download).to.include('my_awesome_raffle');
+        expect(find('[data-test-download-button]').download).to.include('my_awesome_raffle');
       });
 
       it('is a text file', function() {
         render.call(this);
 
-        expect(find(testSelector('download-button')).download).to.include('.txt');
+        expect(find('[data-test-download-button]').download).to.include('.txt');
       });
     });
   });

@@ -3,7 +3,6 @@ import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import { find } from 'ember-native-dom-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | homepage content', function() {
   setupComponentTest('homepage-content', {
@@ -15,22 +14,22 @@ describe('Integration | Component | homepage content', function() {
   });
 
   it('shows confetti-rain', function() {
-    expect(find(testSelector('component', 'confetti-rain'))).to.be.ok;
+    expect(find('[data-test-component="confetti-rain"]')).to.be.ok;
   });
 
   it('has a jumbotron', function() {
-    expect(find(testSelector('jumbotron-header')).textContent.trim()).to.equal('ember-raffle');
+    expect(find('[data-test-jumbotron-header]').textContent.trim()).to.equal('ember-raffle');
   });
 
   it('has a why segment', function() {
-    expect(find(testSelector('why-segment'))).to.be.ok;
+    expect(find('[data-test-why-segment]')).to.be.ok;
   });
 
   it('has a get-started segment', function() {
-    expect(find(testSelector('get-started-segment'))).to.be.ok;
+    expect(find('[data-test-get-started-segment]')).to.be.ok;
   });
 
   it('has shameless self-promotion', function() {
-    expect(find(testSelector('shamless-self-promotion-segment'))).to.be.ok;
+    expect(find('[data-test-shamless-self-promotion-segment]')).to.be.ok;
   });
 });

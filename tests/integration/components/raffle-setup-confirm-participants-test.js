@@ -4,7 +4,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers';
 import { makeList, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | raffle setup confirm participants', function() {
   setupComponentTest('raffle-setup-confirm-participants', {
@@ -26,7 +25,7 @@ describe('Integration | Component | raffle setup confirm participants', function
       render.call(this);
     });
     it('has a header', function() {
-      expect(find(testSelector('confirm-participants-header')).textContent.trim()).to.equal("Is this everyone?");
+      expect(find('[data-test-confirm-participants-header]').textContent.trim()).to.equal("Is this everyone?");
     });
 
     it('has a table', function() {
@@ -49,11 +48,11 @@ describe('Integration | Component | raffle setup confirm participants', function
 
   it('has an edit button', function() {
     render.call(this);
-    expect(find(testSelector('link', 'confirm-participants'))).to.be.ok;
+    expect(find('[data-test-link="confirm-participants"]')).to.be.ok;
   });
 
   it('has a confirm link', function() {
     render.call(this);
-    expect(find(testSelector('link', 'confirm-participants'))).to.be.ok;
+    expect(find('[data-test-link="confirm-participants"]')).to.be.ok;
   });
 });

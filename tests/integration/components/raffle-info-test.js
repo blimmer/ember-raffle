@@ -4,7 +4,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers';
 import { make, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | raffle info', function() {
   setupComponentTest('raffle-info', {
@@ -23,7 +22,7 @@ describe('Integration | Component | raffle info', function() {
     this.set('raffle', make('raffle', { name: 'My Raffle' }));
     render.call(this);
 
-    expect(find(testSelector('raffle-name')).textContent.trim()).to.equal('My Raffle');
+    expect(find('[data-test-raffle-name]').textContent.trim()).to.equal('My Raffle');
   });
 
   context('new raffle', function() {
@@ -33,15 +32,15 @@ describe('Integration | Component | raffle info', function() {
     });
 
     it('has a disabled link to ready-for-drawing', function() {
-      expect(find(`${testSelector('ready-for-drawing-header')} a.disabled`)).to.be.ok;
+      expect(find(`${'[data-test-ready-for-drawing-header]'} a.disabled`)).to.be.ok;
     });
 
     it('has a tooltip explaining why the link is disabled', function() {
-      expect(find(`${testSelector('ready-for-drawing-header')} a.disabled`).title).to.equal('Please complete setup to enable this action');
+      expect(find(`${'[data-test-ready-for-drawing-header]'} a.disabled`).title).to.equal('Please complete setup to enable this action');
     });
 
     it('does not show the raffle export button', function() {
-      expect(find(testSelector('component', 'raffle-export'))).to.be.null;
+      expect(find('[data-test-component="raffle-export"]')).to.be.null;
     });
   });
 
@@ -52,12 +51,12 @@ describe('Integration | Component | raffle info', function() {
     });
 
     it('has an enabled link to ready-for-drawing', function() {
-      expect(find(`${testSelector('ready-for-drawing-header')} a`)).to.be.ok;
-      expect(find(`${testSelector('ready-for-drawing-header')} a.disabled`)).to.not.be.ok;
+      expect(find(`${'[data-test-ready-for-drawing-header]'} a`)).to.be.ok;
+      expect(find(`${'[data-test-ready-for-drawing-header]'} a.disabled`)).to.not.be.ok;
     });
 
     it('does not show the raffle export button', function() {
-      expect(find(testSelector('component', 'raffle-export'))).to.be.null;
+      expect(find('[data-test-component="raffle-export"]')).to.be.null;
     });
   });
 
@@ -68,23 +67,23 @@ describe('Integration | Component | raffle info', function() {
     });
 
     it('shows a message stating the raffle is complete', function() {
-      expect(find(testSelector('completed-header')).textContent.trim()).to.equal('Winners have already been drawn for this raffle!');
+      expect(find('[data-test-completed-header]').textContent.trim()).to.equal('Winners have already been drawn for this raffle!');
     });
 
     it('shows the winner', function() {
-      expect(find(testSelector('component', 'winner-card'))).to.be.ok;
+      expect(find('[data-test-component="winner-card"]')).to.be.ok;
     });
 
     it('does not show the setup link', function() {
-      expect(find(testSelector('setup-header'))).to.not.be.ok;
+      expect(find('[data-test-setup-header]')).to.not.be.ok;
     });
 
     it('does not show the ready-for-drawing link', function() {
-      expect(find(testSelector('ready-for-drawing-header'))).to.not.be.ok;
+      expect(find('[data-test-ready-for-drawing-header]')).to.not.be.ok;
     });
 
     it('shows the raffle export button', function() {
-      expect(find(testSelector('component', 'raffle-export'))).to.be.ok;
+      expect(find('[data-test-component="raffle-export"]')).to.be.ok;
     });
   });
 });

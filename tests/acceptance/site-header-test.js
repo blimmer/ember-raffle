@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import startApp from 'raffle/tests/helpers/start-app';
 import destroyApp from 'raffle/tests/helpers/destroy-app';
 import { click } from 'ember-native-dom-helpers';
-import testSelector from 'ember-test-selectors';
 
 describe('Acceptance | site header', function() {
   let application;
@@ -18,13 +17,13 @@ describe('Acceptance | site header', function() {
 
   it('links to the homepage when clicking the homepage link', async function() {
     await visit('/raffles');
-    await click(testSelector('selector', 'global-homepage-link'));
+    await click('[data-test-selector="global-homepage-link"]');
     expect(currentURL()).to.equal('/');
   });
 
   it('links to the raffles list when clicking the view all raffles link', async function() {
     await visit('/');
-    await click(testSelector('selector', 'global-raffles-link'));
+    await click('[data-test-selector="global-raffles-link"]');
     expect(currentURL()).to.equal('/raffles');
   });
 });

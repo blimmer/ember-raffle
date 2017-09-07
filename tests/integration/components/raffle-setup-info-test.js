@@ -4,7 +4,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers';
 import { make, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | raffle setup info', function() {
   setupComponentTest('raffle-setup-info', {
@@ -28,17 +27,17 @@ describe('Integration | Component | raffle setup info', function() {
   it('shows the raffle name in the header', function() {
     this.set('raffle', make('raffle', { name: 'My Raffle' }));
     render.call(this);
-    expect(find(testSelector('header')).textContent.trim()).to.equal('Setup My Raffle');
+    expect(find('[data-test-header]').textContent.trim()).to.equal('Setup My Raffle');
   });
 
   it('has a link to settings', function() {
     render.call(this);
-    expect(find(testSelector('settings-header') + ' a')).to.be.ok;
+    expect(find('[data-test-settings-header]' + ' a')).to.be.ok;
   });
 
   it('has a link to add participants', function() {
     render.call(this);
-    expect(find(testSelector('add-participants-header') + ' a')).to.be.ok;
+    expect(find('[data-test-add-participants-header]' + ' a')).to.be.ok;
   });
 
   it('has a save button', function() {

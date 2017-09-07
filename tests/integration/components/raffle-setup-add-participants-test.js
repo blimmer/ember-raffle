@@ -5,7 +5,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find, fillIn, click } from 'ember-native-dom-helpers';
 import { make, makeList, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | raffle setup add participants', function() {
   setupComponentTest('raffle-setup-add-participants', {
@@ -37,7 +36,7 @@ describe('Integration | Component | raffle setup add participants', function() {
       render.call(this);
     });
     it('has a header', function() {
-      expect(find(testSelector('add-participants-header')).textContent.trim()).to.equal("Who's participating in this raffle?");
+      expect(find('[data-test-add-participants-header]').textContent.trim()).to.equal("Who's participating in this raffle?");
     });
 
     it('has a textarea', function() {
@@ -45,7 +44,7 @@ describe('Integration | Component | raffle setup add participants', function() {
     });
 
     it('has a button to save changes', function() {
-      expect(find(testSelector('add-participants-button'))).to.be.ok;
+      expect(find('[data-test-add-participants-button]')).to.be.ok;
     });
   });
 
@@ -72,7 +71,7 @@ describe('Integration | Component | raffle setup add participants', function() {
       render.call(this);
       expect(store.peekAll('participant').get('length')).to.equal(0);
       await fillIn('textarea', 'New Guy 1\nNew Guy 2');
-      await click(testSelector('add-participants-button'));
+      await click('[data-test-add-participants-button]');
       let participants = store.peekAll('participant');
       expect(participants.get('length')).to.equal(2);
       expect(participants.get('firstObject.name')).to.equal('New Guy 1');
@@ -88,7 +87,7 @@ describe('Integration | Component | raffle setup add participants', function() {
       });
       expect(store.peekAll('participant').get('length')).to.equal(1);
       await fillIn('textarea', 'New Guy 1\nNew Guy 2');
-      await click(testSelector('add-participants-button'));
+      await click('[data-test-add-participants-button]');
       let participants = store.peekAll('participant');
       expect(participants.get('length')).to.equal(2);
     });
@@ -96,7 +95,7 @@ describe('Integration | Component | raffle setup add participants', function() {
     it('associates participants with the raffle', async function() {
       render.call(this);
       await fillIn('textarea', 'New Guy 1\nNew Guy 2');
-      await click(testSelector('add-participants-button'));
+      await click('[data-test-add-participants-button]');
       expect(this.get('raffle.participants.length')).to.equal(2);
     });
 
@@ -106,7 +105,7 @@ describe('Integration | Component | raffle setup add participants', function() {
       });
       render.call(this);
       await fillIn('textarea', 'New Guy 1\nNew Guy 2');
-      await click(testSelector('add-participants-button'));
+      await click('[data-test-add-participants-button]');
     });
   });
 });
