@@ -4,7 +4,6 @@ import startApp from 'raffle/tests/helpers/start-app';
 import destroyApp from 'raffle/tests/helpers/destroy-app';
 import { find, visit } from 'ember-native-dom-helpers';
 import { make } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Acceptance | raffles/raffle/winners', function() {
   let application, raffle;
@@ -25,6 +24,6 @@ describe('Acceptance | raffles/raffle/winners', function() {
 
   it('renders the winner list', async function() {
     await visit(`/raffles/${raffle.id}/winners`);
-    expect(find(testSelector('component', 'winner-list'))).to.be.ok;
+    expect(find('[data-test-component="winner-list"]')).to.be.ok;
   });
 });

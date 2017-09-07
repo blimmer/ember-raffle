@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import startApp from 'raffle/tests/helpers/start-app';
 import destroyApp from 'raffle/tests/helpers/destroy-app';
 import { visit, find } from 'ember-native-dom-helpers';
-import testSelector from 'ember-test-selectors';
 
 describe('Acceptance | raffles', function() {
   let application;
@@ -23,13 +22,13 @@ describe('Acceptance | raffles', function() {
 
   it('it renders the raffle list component', async function() {
     await visit('/raffles');
-    expect(find(testSelector('component', 'raffle-list'))).to.be.ok;
+    expect(find('[data-test-component="raffle-list"]')).to.be.ok;
   });
 
   context('no raffles created', function() {
     it('create a new raffle and navigates to its landing page when clicking the button', async function() {
       await visit('/raffles');
-      await click(testSelector('create-new-raffle-button'));
+      await click('[data-test-create-new-raffle-button]');
       expect(currentRouteName()).to.equal('raffles.raffle.index');
     });
   });

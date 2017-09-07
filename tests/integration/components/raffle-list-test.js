@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import { describe, it, context, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
-import testSelector from 'ember-test-selectors';
 import { click, find, findAll } from 'ember-native-dom-helpers';
 import { make, manualSetup } from 'ember-data-factory-guy';
 
@@ -26,7 +25,7 @@ describe('Integration | Component | raffle list', function() {
 
   it('has a button to create a new raffle', function() {
     render.call(this);
-    expect(find(testSelector('create-new-raffle-button'))).to.be.ok;
+    expect(find('[data-test-create-new-raffle-button]')).to.be.ok;
   });
 
   it('fires the create new raffle action when clicking the new button', async function(done) {
@@ -35,13 +34,13 @@ describe('Integration | Component | raffle list', function() {
     });
 
     render.call(this);
-    await click(testSelector('create-new-raffle-button'));
+    await click('[data-test-create-new-raffle-button]');
   });
 
   context('no raffles created', function() {
     it('shows a message intended for new users', function() {
       render.call(this);
-      expect(find(testSelector('empty-state')).textContent).to.include("Hi! Looks like you're new here.")
+      expect(find('[data-test-empty-state]').textContent).to.include("Hi! Looks like you're new here.")
     });
   });
 
@@ -103,7 +102,7 @@ describe('Integration | Component | raffle list', function() {
       it('shows a warning that all data is local to this computer', function() {
         render.call(this);
 
-        let helpText = find(testSelector('localstorage-reminder')).textContent;
+        let helpText = find('[data-test-localstorage-reminder]').textContent;
         expect(helpText).to.include("stored on this computer");
         expect(helpText).to.include("save the results");
       });

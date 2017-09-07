@@ -4,7 +4,6 @@ import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
 import { find } from 'ember-native-dom-helpers';
 import { make, makeList, manualSetup } from 'ember-data-factory-guy';
-import testSelector from 'ember-test-selectors';
 
 describe('Integration | Component | winner list', function() {
   setupComponentTest('winner-list', {
@@ -28,12 +27,12 @@ describe('Integration | Component | winner list', function() {
 
   it('shows confetti', function() {
     render.call(this);
-    expect(find(testSelector('component', 'confetti-rain'))).to.be.ok;
+    expect(find('[data-test-component="confetti-rain"]')).to.be.ok;
   });
 
   it('renders a winner card for each winner', function() {
     this.set('winners', makeList('participant', 2))
     render.call(this);
-    expect(find(testSelector('component', 'winner-card'))).to.be.ok;
+    expect(find('[data-test-component="winner-card"]')).to.be.ok;
   });
 });
