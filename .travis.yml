@@ -3,8 +3,8 @@ language: node_js
 node_js:
   - "6"
 
-dist: trusty
 sudo: false
+dist: trusty
 
 addons:
   chrome: stable
@@ -12,15 +12,18 @@ addons:
 cache:
   yarn: true
 
+env:
+  global:
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn global add bower
-  - bower --version
 
 install:
   - yarn install --non-interactive
-  - bower install
 
 script:
+  - yarn lint:js
   - yarn test

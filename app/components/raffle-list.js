@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import Table from 'ember-light-table';
 
-export default Ember.Component.extend({
-  columns: Ember.computed(function() {
+export default Component.extend({
+  columns: computed(function() {
     return [
       {
         label: 'Name',
@@ -15,7 +16,7 @@ export default Ember.Component.extend({
     ]
   }),
 
-  table: Ember.computed('raffles.[]', function() {
+  table: computed('raffles.[]', function() {
     return new Table(this.get('columns'), this.get('raffles'));
   }),
 

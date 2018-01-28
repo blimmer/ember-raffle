@@ -1,4 +1,10 @@
-import { describe, context, it, beforeEach, afterEach } from 'mocha';
+import {
+  describe,
+  context,
+  it,
+  beforeEach,
+  afterEach
+} from 'mocha';
 import { expect } from 'chai';
 import startApp from 'raffle/tests/helpers/start-app';
 import destroyApp from 'raffle/tests/helpers/destroy-app';

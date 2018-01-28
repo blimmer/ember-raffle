@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { getOwner } from '@ember/application';
 import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
@@ -64,7 +64,7 @@ describe('Integration | Component | raffle setup add participants', function() {
   describe('add participants button', function() {
     let store;
     beforeEach(function() {
-      store = Ember.getOwner(this).lookup('service:store');
+      store = getOwner(this).lookup('service:store');
     });
 
     it('creates paricipants that do not yet exist', async function() {

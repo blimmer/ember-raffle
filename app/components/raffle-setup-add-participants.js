@@ -1,9 +1,12 @@
-import Ember from 'ember';
+import { Promise as EmberPromise } from 'rsvp';
+import { computed, get } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 import { chain } from 'lodash';
 
-export default Ember.Component.extend({
-  store: Ember.inject.service(),
-  nameList: Ember.computed(function() {
+export default Component.extend({
+  store: service(),
+  nameList: computed(function() {
     let participants = this.get('raffle.participants');
     return participants.reduce((str, participant) => {
       return str += `${participant.get('name')}\n`;
@@ -17,11 +20,11 @@ export default Ember.Component.extend({
       .value();
 
     let store = this.get('store');
-    return Ember.RSVP.Promise.all(names.map((name) => {
+    return EmberPromise.all(names.map((name) => {
       return store.query('participant', {
         name,
       }).then((result) => {
-        let existingParticipant = Ember.get(result, 'firstObject');
+        let existingParticipant = get(result, 'firstObject');
         if (!existingParticipant) {
           return store.createRecord('participant', {
             name,
@@ -29,7 +32,7 @@ export default Ember.Component.extend({
         } else {
           return existingParticipant;
         }
-      })
+      });
     }));
   },
   associateParticipants(participants) {

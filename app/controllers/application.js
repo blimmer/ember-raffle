@@ -1,7 +1,9 @@
-import Ember from 'ember';
+import { dasherize } from '@ember/string';
+import { computed } from '@ember/object';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-  routeCssName: Ember.computed('currentRouteName', function() {
-    return Ember.String.dasherize(this.get('currentRouteName'));
+export default Controller.extend({
+  routeCssName: computed('currentRouteName', function() {
+    return dasherize(this.get('currentRouteName'));
   }),
 });

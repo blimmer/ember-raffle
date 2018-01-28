@@ -1,17 +1,19 @@
-import Ember from 'ember';
+import { computed, getProperties } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['ui', 'center', 'aligned', 'basic', 'segment'],
-  i18n: Ember.inject.service(),
+  i18n: service(),
 
-  textFileData: Ember.computed('raffle.id', function() {
+  textFileData: computed('raffle.id', function() {
     let raffle = this.get('raffle');
     let {
       name,
       drawingEndTime,
       participants,
       winners,
-    } = Ember.getProperties(raffle, 'name', 'drawingEndTime', 'participants', 'winners');
+    } = getProperties(raffle, 'name', 'drawingEndTime', 'participants', 'winners');
 
     let string = this.get('i18n').t('raffleExport.textFileTemplate', {
       raffleName: name,

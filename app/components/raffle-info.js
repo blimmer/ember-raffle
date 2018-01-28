@@ -1,8 +1,10 @@
-import Ember from 'ember';
+import { reads } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 import { translationMacro as t } from "ember-i18n";
 
-export default Ember.Component.extend({
-  i18n: Ember.inject.service(),
-  raffleNotSetup: Ember.computed.reads('raffle.validations.isInvalid'),
+export default Component.extend({
+  i18n: service(),
+  raffleNotSetup: reads('raffle.validations.isInvalid'),
   completeSetupTooltip: t('raffleInfo.completeSetupTooltip'),
 });
