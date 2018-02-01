@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
 import { expect } from 'chai';
 import { describe, it, context, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
@@ -50,7 +50,7 @@ describe('Integration | Component | raffle list', function() {
       manualSetup(this.container);
       unfinishedRaffle = make('raffle');
       finishedRaffle = make('raffle', 'finished');
-      this.set('raffles', Ember.A([unfinishedRaffle, finishedRaffle]));
+      this.set('raffles', A([unfinishedRaffle, finishedRaffle]));
     });
 
     describe('table', function() {

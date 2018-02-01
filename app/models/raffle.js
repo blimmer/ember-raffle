@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
+import { bool } from '@ember/object/computed';
+import { computed, get } from '@ember/object';
 import DS from 'ember-data';
 import moment from 'moment';
 import { validator, buildValidations } from 'ember-cp-validations';
@@ -10,7 +12,7 @@ const Validations = buildValidations({
     allowString: true,
     integer: true,
     gt: 0,
-    lte: Ember.computed('model.participants.[]', function() {
+    lte: computed('model.participants.[]', function() {
       let participantCount = this.get('model.participants.length');
       if (participantCount === 0) {
         return Infinity;
@@ -32,16 +34,16 @@ export default DS.Model.extend(Validations, {
   drawingEndTime: DS.attr('date'),
   winners: DS.hasMany('participant'),
 
-  drawingComplete: Ember.computed.bool('drawingEndTime'),
-  losers: Ember.computed('winners.[]', function() {
+  drawingComplete: bool('drawingEndTime'),
+  losers: computed('winners.[]', function() {
     let winners = this.get('winners').toArray();
-    if (Ember.get(winners, 'length') > 0) {
+    if (get(winners, 'length') > 0) {
       let participants = this.get('participants').toArray();
-      return Ember.A(participants.reject(function(participant) {
+      return A(participants.reject(function(participant) {
         return winners.includes(participant);
       }));
     } else {
-      return Ember.A([]);
+      return A([]);
     }
   }),
 });

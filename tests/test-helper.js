@@ -1,4 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { dasherize } from '@ember/string';
+import Mixin from '@ember/object/mixin';
+import { get, computed } from '@ember/object';
+import { registerWarnHandler } from '@ember/debug';
 import resolver from './helpers/resolver';
 import { setResolver } from 'ember-mocha';
 import { before, afterEach } from 'mocha';
@@ -7,21 +11,18 @@ import sinon from 'sinon';
 setResolver(resolver);
 
 before(function() {
-  // There has got to be a better way!
-  // https://github.com/simplabs/ember-test-selectors/issues/106
-  let realEmberWarn = Ember.warn;
-  Ember.warn = function(_1, _2, opts) {
-    if (Ember.get(opts, 'id') !== "ember-test-selectors.empty-tag-name") {
-      realEmberWarn(...arguments);
+  registerWarnHandler((_1, opts, next) => {
+    if (get(opts, 'id') !== "ember-test-selectors.empty-tag-name") {
+      next(...arguments);
     }
-  }
-  let ComponentTestingMixin = Ember.Mixin.create({
-    'data-test-component': Ember.computed(function() {
+  });
+  let ComponentTestingMixin = Mixin.create({
+    'data-test-component': computed(function() {
       let [, componentName] = this._debugContainerKey.replace(/\//g, '-').split(':');
-      return Ember.String.dasherize(componentName);
+      return dasherize(componentName);
     })
   });
-  Ember.Component.reopen(ComponentTestingMixin);
+  Component.reopen(ComponentTestingMixin);
 
   this.sandbox = sinon.sandbox.create();
 });

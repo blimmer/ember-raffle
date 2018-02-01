@@ -1,8 +1,16 @@
+import { computed } from '@ember/object';
+import { union } from '@ember/object/computed';
+import Component from '@ember/component';
 import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
-import { round, sampleSize, shuffle, without } from 'lodash';
+import {
+  round,
+  sampleSize,
+  shuffle,
+  without
+} from 'lodash';
 
-export default Ember.Component.extend({
+export default Component.extend({
   didReceiveAttrs() {
     this._super(...arguments);
 
@@ -14,8 +22,8 @@ export default Ember.Component.extend({
   },
 
   losersRemainingToDrop: null, // set as clone on didReceiveAttrs
-  allParticipants: Ember.computed.union('winners', 'losers'),
-  currentParticipants: Ember.computed('allParticipants.[]', function() {
+  allParticipants: union('winners', 'losers'),
+  currentParticipants: computed('allParticipants.[]', function() {
     return shuffle(this.get('allParticipants'));
   }),
 

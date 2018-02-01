@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
 import { expect } from 'chai';
 import { describe, context, it, beforeEach } from 'mocha';
 import { setupModelTest } from 'ember-mocha';
@@ -38,7 +38,7 @@ describe('Unit | Model | raffle', function() {
         let participants = makeList('participant', 3);
         let model = this.subject({
           participants,
-          winners: Ember.A([participants.get('firstObject')]),
+          winners: A([participants.get('firstObject')]),
         });
 
         let losers = model.get('losers');

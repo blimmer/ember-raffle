@@ -1,11 +1,12 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
 import LSAdapter from 'ember-localstorage-adapter';
 
 export default LSAdapter.extend({
-  i18n: Ember.inject.service(),
+  i18n: service(),
   namespace: 'raffle',
 
-  _warnOnPersistenceUnavailable: Ember.on('persistenceUnavailable', function() {
+  _warnOnPersistenceUnavailable: on('persistenceUnavailable', function() {
     window.alert(
       this.get('i18n').t('adapter.localstorageDisabled')
     );
