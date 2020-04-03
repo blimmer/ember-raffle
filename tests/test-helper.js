@@ -1,23 +1,37 @@
+import Application from '../app';
+import config from '../config/environment';
+import {
+  setApplication
+} from '@ember/test-helpers';
+import {
+  start
+} from 'ember-mocha';
+import {
+  before,
+  afterEach
+} from 'mocha';
 import Component from '@ember/component';
-import { dasherize } from '@ember/string';
+import {
+  dasherize
+} from '@ember/string';
 import Mixin from '@ember/object/mixin';
-import { get, computed } from '@ember/object';
-import { registerWarnHandler } from '@ember/debug';
-import resolver from './helpers/resolver';
-import { setResolver } from 'ember-mocha';
-import { before, afterEach } from 'mocha';
+import {
+  get,
+  computed
+} from '@ember/object';
+import {
+  registerWarnHandler
+} from '@ember/debug';
 import sinon from 'sinon';
 
-setResolver(resolver);
-
-before(function() {
+before(function () {
   registerWarnHandler((_1, opts, next) => {
     if (get(opts, 'id') !== "ember-test-selectors.empty-tag-name") {
       next(...arguments);
     }
   });
   let ComponentTestingMixin = Mixin.create({
-    'data-test-component': computed(function() {
+    'data-test-component': computed(function () {
       let [, componentName] = this._debugContainerKey.replace(/\//g, '-').split(':');
       return dasherize(componentName);
     })
@@ -27,7 +41,11 @@ before(function() {
   this.sandbox = sinon.sandbox.create();
 });
 
-afterEach(function() {
+afterEach(function () {
   this.sandbox.restore();
   localStorage.removeItem('raffle') // clear all models
 });
+
+setApplication(Application.create(config.APP));
+
+start();

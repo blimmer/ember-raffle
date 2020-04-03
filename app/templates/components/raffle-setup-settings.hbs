@@ -1,30 +1,23 @@
-<h1 data-test-header class='ui header'>{{t 'raffleSetupSettings.header'}}</h1>
-<div class='ui form'>
-  <div class='field'>
-    <label>{{t 'raffleSetupSettings.nameInput.label'}}</label>
-    <input
-      data-test-raffle-name-input
-      oninput={{action (mut raffle.name) value="target.value"}}
-      value={{raffle.name}} />
+<h1 data-test-header class="ui header">
+  {{t "raffleSetupSettings.header"}}
+</h1>
+<div class="ui form">
+  <div class="field">
+    <label>{{t "raffleSetupSettings.nameInput.label"}}</label>
+    <input data-test-raffle-name-input oninput={{action (mut raffle.name) value="target.value"}} value={{raffle.name}}>
   </div>
-  <div class='four wide field'>
-    <label>{{t 'raffleSetupSettings.winnerNumberInput.label'}}</label>
-    <div class='ui right labeled input'>
-      <input
-        data-test-raffle-num-winners-input
-        type='number'
-        oninput={{action (mut raffle.numberOfWinners) value="target.value"}}
-        value={{raffle.numberOfWinners}} />
-      <div data-test-raffle-num-winners-label class='ui basic label'>
-        {{t 'raffleSetupSettings.winnerNumberInput.inlineLabel' count=raffle.numberOfWinners}}
+  <div class="four wide field">
+    <label>{{t "raffleSetupSettings.winnerNumberInput.label"}}</label>
+    <div class="ui right labeled input">
+      <input data-test-raffle-num-winners-input type="number"
+        oninput={{action (mut raffle.numberOfWinners) value="target.value"}} value={{raffle.numberOfWinners}}>
+      <div data-test-raffle-num-winners-label class="ui basic label">
+        {{t "raffleSetupSettings.winnerNumberInput.inlineLabel" count=raffle.numberOfWinners}}
       </div>
     </div>
   </div>
-  <button
-    data-test-save-button
-    class='ui primary button'
-    onclick={{action saveRaffleSettings}}
-    disabled={{or (v-get raffle 'name' 'isInvalid') (v-get raffle 'numberOfWinners' 'isInvalid')}}>
-    {{t 'common.save'}}
+  <button data-test-save-button class="ui primary button" onclick={{action saveRaffleSettings}}
+    disabled={{or (v-get raffle "name" "isInvalid") (v-get raffle "numberOfWinners" "isInvalid")}}>
+    {{t "common.save"}}
   </button>
 </div>
