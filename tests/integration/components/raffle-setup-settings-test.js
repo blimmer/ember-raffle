@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
-import { find, click, fillIn } from 'ember-native-dom-helpers';
+import { find, click, fillIn } from '@ember/test-helpers';
 import { make, manualSetup } from 'ember-data-factory-guy';
 
 describe('Integration | Component | raffle setup settings', function() {

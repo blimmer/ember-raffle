@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
-import { find, fillIn, click } from 'ember-native-dom-helpers';
+import { find, fillIn, click } from '@ember/test-helpers';
 import { make, makeList, manualSetup } from 'ember-data-factory-guy';
 
 describe('Integration | Component | raffle setup add participants', function() {

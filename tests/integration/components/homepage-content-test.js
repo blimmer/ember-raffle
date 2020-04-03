@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
-import { find } from 'ember-native-dom-helpers';
+import { find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 describe('Integration | Component | homepage content', function() {

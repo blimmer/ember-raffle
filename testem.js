@@ -19,7 +19,8 @@ module.exports = {
         '--mute-audio',
         '--remote-debugging-port=0',
         '--window-size=1440,900',
-        '--crash-dumps-dir=/tmp'
+        '--crash-dumps-dir=/tmp',
+        '--use-fake-ui-for-media-stream'
       ].filter(Boolean)
     }
   }

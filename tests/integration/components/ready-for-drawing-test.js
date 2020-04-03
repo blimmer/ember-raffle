@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import { setupComponentTest } from 'ember-mocha';
 import hbs from 'htmlbars-inline-precompile';
-import { find } from 'ember-native-dom-helpers';
+import { find } from '@ember/test-helpers';
 import { make, makeList, manualSetup } from 'ember-data-factory-guy';
 
 describe('Integration | Component | ready for drawing', function() {
