@@ -17,7 +17,10 @@ export default Component.extend({
   }),
 
   table: computed("raffles.[]", function () {
-    return new Table(this.get("columns"), this.get("raffles"));
+    return Table.create({
+      columns: this.get("columns"),
+      rows: this.get("raffles"),
+    });
   }),
 
   rowClicked(row) {
