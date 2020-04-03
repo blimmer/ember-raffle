@@ -11,10 +11,12 @@ import {
 } from 'chai';
 import {
   find,
-  visit
+  visit,
+  currentURL
 } from '@ember/test-helpers';
 import {
-  make
+  make,
+  manualSetup
 } from 'ember-data-factory-guy';
 
 describe('Acceptance | raffles/raffle/winners', function () {
@@ -22,6 +24,7 @@ describe('Acceptance | raffles/raffle/winners', function () {
 
   let raffle;
   beforeEach(function () {
+    manualSetup(this);
     raffle = make('raffle', 'finished');
   });
 

@@ -13,10 +13,12 @@ import {
   visit,
   find,
   click,
-  fillIn
+  fillIn,
+  currentURL
 } from '@ember/test-helpers';
 import {
-  make
+  make,
+  manualSetup
 } from 'ember-data-factory-guy';
 
 describe('Acceptance | raffles/raffle/add participants', function () {
@@ -24,6 +26,7 @@ describe('Acceptance | raffles/raffle/add participants', function () {
 
   let raffle;
   beforeEach(function () {
+    manualSetup(this);
     raffle = make('raffle');
   });
 

@@ -1,19 +1,7 @@
-import {
-  describe,
-  it
-} from "mocha";
-import {
-  expect
-} from "chai";
-import {
-  setupApplicationTest
-} from "ember-mocha";
-import {
-  visit,
-  click,
-  find,
-  currentURL
-} from "@ember/test-helpers";
+import { describe, it } from "mocha";
+import { expect } from "chai";
+import { setupApplicationTest } from "ember-mocha";
+import { visit, click, find, currentURL } from "@ember/test-helpers";
 
 describe("Acceptance | index", function () {
   setupApplicationTest();
@@ -25,7 +13,6 @@ describe("Acceptance | index", function () {
 
   it("it renders the homepage content module", async function () {
     await visit("/");
-    debugger;
     expect(find('[data-test-component="homepage-content"]')).to.be.ok;
   });
 

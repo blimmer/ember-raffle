@@ -11,7 +11,8 @@ import {
 } from 'chai';
 import {
   visit,
-  click
+  click,
+  currentURL
 } from '@ember/test-helpers';
 import {
   make,
@@ -22,8 +23,8 @@ describe('Acceptance | raffles/raffle/index', function () {
   setupApplicationTest();
 
   beforeEach(() => {
-    manualSetup(this)
-  })
+    manualSetup(this.ctx);
+  });
 
   it('can visit the route', async function () {
     let raffle = make('raffle');
