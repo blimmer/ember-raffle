@@ -1,34 +1,34 @@
-<div class='ui very padded text container segment'>
-  <h1 class='ui header'>
-    <div data-test-raffle-name class='content'>
+<div class="ui very padded text container segment">
+  <h1 class="ui header">
+    <div data-test-raffle-name class="content">
       {{raffle.name}}
     </div>
   </h1>
 
   {{#if raffle.drawingComplete}}
-    <h2 data-test-completed-header class='ui header'>
-      {{t 'raffleInfo.completed.header'}}
+    <h2 data-test-completed-header class="ui header">
+      {{t "raffleInfo.completed.header"}}
     </h2>
     {{#each raffle.winners as |winner|}}
       {{winner-card winner=winner}}
     {{/each}}
     {{raffle-export raffle=raffle}}
   {{else}}
-    <h2 data-test-setup-header class='ui header'>
-      <i class='icon em em-memo'></i>
-      {{#link-to 'raffles.raffle.setup' raffle class='content'}}
-        {{t 'raffleInfo.setup'}}
+    <h2 data-test-setup-header class="ui header">
+      <i class="icon em em-memo"></i>
+      {{#link-to "raffles.raffle.setup" raffle class="content"}}
+        {{t "raffleInfo.setup"}}
       {{/link-to}}
     </h2>
-    <h2 data-test-ready-for-drawing-header class='ui header'>
-      <i class='icon em em-zap'></i>
+    <h2 data-test-ready-for-drawing-header class="ui header">
+      <i class="icon em em-zap"></i>
       {{#link-to
-        'raffles.raffle.ready-for-drawing'
+        "raffles.raffle.ready-for-drawing"
         raffle
-        class='content'
+        class="content"
         disabledWhen=raffleNotSetup
         title=(if raffleNotSetup completeSetupTooltip)}}
-        {{t 'raffleInfo.ready'}}
+        {{t "raffleInfo.ready"}}
       {{/link-to}}
     </h2>
   {{/if}}

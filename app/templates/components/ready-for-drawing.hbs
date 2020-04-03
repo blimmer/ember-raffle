@@ -1,21 +1,21 @@
-<div class='ui very padded text container segment'>
-  <h1 data-test-header class='ui header'>
-    <div class='content'>
-      {{t 'readyForDrawing.header' raffleName=raffle.name}}
+<div class="ui very padded text container segment">
+  <h1 data-test-header class="ui header">
+    <div class="content">
+      {{t "readyForDrawing.header" raffleName=raffle.name}}
     </div>
   </h1>
-  <div class='ui left aligned text container'>
+  <div class="ui left aligned text container">
     <div data-test-number-of-participants>
-      {{t 'readyForDrawing.meta.participants' count=raffle.participants.length}}
+      {{t "readyForDrawing.meta.participants" count=raffle.participants.length}}
     </div>
     <div data-test-number-of-winners>
-      {{t 'readyForDrawing.meta.numberOfWinners' count=raffle.numberOfWinners}}
+      {{t "readyForDrawing.meta.numberOfWinners" count=raffle.numberOfWinners}}
     </div>
   </div>
 
-  <div class='ui divider'></div>
+  <div class="ui divider"></div>
 
-  {{#link-to 'raffles.raffle.run-drawing' raffle class='ui massive fluid primary button'}}
-    {{t 'readyForDrawing.runDrawingCta'}}
+  {{#link-to "raffles.raffle.run-drawing' raffle class='ui massive fluid primary button"}}
+    {{t "readyForDrawing.runDrawingCta"}}
   {{/link-to}}
 </div>

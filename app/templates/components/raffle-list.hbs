@@ -1,38 +1,35 @@
-<div class='ui very padded attached text container segment'>
+<div class="ui very padded attached text container segment">
   {{#if (gt raffles.length 0)}}
-    <h1 class='ui header'>
-      <i class='icon em em-sparkles'></i>
-      <div class='content'>
-        {{t 'raffleList.header'}}
+    <h1 class="ui header">
+      <i class="icon em em-sparkles"></i>
+      <div class="content">
+        {{t "raffleList.header"}}
       </div>
     </h1>
-    <div class='ui celled table'>
+    <div class="ui celled table">
       {{#light-table table as |t|}}
         {{t.head}}
         {{t.body onRowClick=(action rowClicked)}}
       {{/light-table}}
     </div>
   {{else}}
-    <h1 data-test-empty-state class='ui header'>
-      <i class='icon em em-wave'></i>
-      <div class='content'>
-        {{t 'raffleList.emptyState'}}
-        <div class='sub header'>
-          {{t 'raffleList.emptyStateDescription'}}
+    <h1 data-test-empty-state class="ui header">
+      <i class="icon em em-wave"></i>
+      <div class="content">
+        {{t "raffleList.emptyState"}}
+        <div class="sub header">
+          {{t "raffleList.emptyStateDescription"}}
         </div>
       </div>
     </h1>
   {{/if}}
-  <button
-    data-test-create-new-raffle-button
-    class='ui large primary button'
-    onclick={{action createNewRaffle}}>{{t 'raffleList.createCta'}}</button>
+  <button data-test-create-new-raffle-button class="ui large primary button" onclick={{action createNewRaffle}}>
+    {{t "raffleList.createCta"}}
+  </button>
 </div>
 {{#if (gt raffles.length 0)}}
-  <div
-    class='ui attached center aligned container segment tip-text'
-    data-test-localstorage-reminder>
-    <i class='em em-bulb'></i>
-    {{t 'raffleList.localstorageReminder'}}
+  <div class="ui attached center aligned container segment tip-text" data-test-localstorage-reminder>
+    <i class="em em-bulb"></i>
+    {{t "raffleList.localstorageReminder"}}
   </div>
 {{/if}}
