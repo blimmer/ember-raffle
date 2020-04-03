@@ -1,6 +1,8 @@
-@import 'pod-styles';
+@import "pod-styles";
 
-html, body, body > div {
+html,
+body,
+body > div {
   height: 100%;
 }
 
@@ -15,4 +17,9 @@ html, body, body > div {
 a.disabled {
   cursor: default;
   color: gray;
+}
+
+// Fix conflict with light-table and semantic UI
+.ui.table .lt-scaffolding-row .lt-scaffolding {
+  padding: 0;
 }
