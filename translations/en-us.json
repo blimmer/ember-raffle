@@ -61,6 +61,9 @@
     "header": "{count, plural, =1 {Our WINNER} other {Our WINNERS}}"
   },
   "homepageContent": {
+    "headshot": {
+      "alt": "Ben Limmer's headshot"
+    },
     "stripes": {
       "why": {
         "header": "You need to run a raffle.",
