@@ -50,7 +50,7 @@
     "ember-data-factory-guy": "^3.9.5",
     "ember-export-application-global": "^2.0.0",
     "ember-i18n": "^5.0.2",
-    "ember-light-table": "^1.10.0",
+    "ember-light-table": "2.0.0-beta.5",
     "ember-load-initializers": "^2.0.0",
     "ember-localstorage-adapter": "git+https://github.com/locks/ember-localstorage-adapter#cf42731c5765ccdb6992f42b2dc8175897c6e4ff",
     "ember-lodash": "^4.17.5",
