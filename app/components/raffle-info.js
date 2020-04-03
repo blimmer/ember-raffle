@@ -1,10 +1,10 @@
 import { reads } from "@ember/object/computed";
 import { inject as service } from "@ember/service";
 import Component from "@ember/component";
-import { translationMacro as t } from "ember-i18n";
+import { translationMacro as t } from "ember-intl";
 
 export default Component.extend({
-  i18n: service(),
+  intl: service(),
   raffleNotSetup: reads("raffle.validations.isInvalid"),
   completeSetupTooltip: t("raffleInfo.completeSetupTooltip"),
 });

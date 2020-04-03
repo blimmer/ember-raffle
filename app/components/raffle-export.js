@@ -4,7 +4,7 @@ import Component from "@ember/component";
 
 export default Component.extend({
   classNames: ["ui", "center", "aligned", "basic", "segment"],
-  i18n: service(),
+  intl: service(),
 
   textFileData: computed("raffle.id", function () {
     let raffle = this.get("raffle");
@@ -16,7 +16,7 @@ export default Component.extend({
       "winners"
     );
 
-    let string = this.get("i18n").t("raffleExport.textFileTemplate", {
+    let string = this.get("intl").t("raffleExport.textFileTemplate", {
       raffleName: name,
       numParticipants: participants.get("length"),
       numWinners: winners.get("length"),
