@@ -1,91 +1,95 @@
 export default {
-  "common": {
-    "siteName": "ember-raffle",
-    "save": "Save",
-    "edit": "Edit",
+  common: {
+    siteName: "ember-raffle",
+    save: "Save",
+    edit: "Edit",
   },
-  "adapter": {
-    "localstorageDisabled": "WARNING: localstorage is disabled. Your data will not be persisted.",
+  adapter: {
+    localstorageDisabled:
+      "WARNING: localstorage is disabled. Your data will not be persisted.",
   },
-  "siteHeader": {
-    "raffles": "View All Raffles"
+  siteHeader: {
+    raffles: "View All Raffles",
   },
-  "raffleList": {
-    "emptyState": "Hi! Looks like you're new here.",
-    "emptyStateDescription": "This is the dashboard for all your raffles. Why don't you create one?",
-    "createCta": "Create a New Raffle",
-    "header": "Your Raffles",
-    "localstorageReminder": "All raffle details are stored on this computer. Make sure to save the results."
+  raffleList: {
+    emptyState: "Hi! Looks like you're new here.",
+    emptyStateDescription:
+      "This is the dashboard for all your raffles. Why don't you create one?",
+    createCta: "Create a New Raffle",
+    header: "Your Raffles",
+    localstorageReminder:
+      "All raffle details are stored on this computer. Make sure to save the results.",
   },
-  "raffleInfo": {
-    "setup": 'Setup',
-    "ready": 'Start the Drawing',
-    "completeSetupTooltip": 'Please complete setup to enable this action',
-    "completed": {
-      "header": "Winners have already been drawn for this raffle!",
-    }
-  },
-  "raffleSetupInfo": {
-    'header': "Setup {{raffleName}}",
-    'settings': 'Settings',
-    'addParticipants': 'Add Participants',
-  },
-  "raffleSetupSettings": {
-    "header": "What're the specifics of this raffle?",
-    "nameInput": {
-      "label": "Name",
+  raffleInfo: {
+    setup: "Setup",
+    ready: "Start the Drawing",
+    completeSetupTooltip: "Please complete setup to enable this action",
+    completed: {
+      header: "Winners have already been drawn for this raffle!",
     },
-    "winnerNumberInput": {
-      "label": "Number of Winners",
-      "inlineLabel": {
-        "one": "winner",
-        "other": "winners"
-      }
-    }
   },
-  "raffleSetupAddParticipants": {
-    "header": "Who's participating in this raffle?",
-    "participantsInput": {
-      "label": "Participants (one per line)"
-    }
+  raffleSetupInfo: {
+    header: "Setup {{raffleName}}",
+    settings: "Settings",
+    addParticipants: "Add Participants",
   },
-  "raffleSetupConfirmParticipants": {
-    "header": "Is this everyone?"
-  },
-  "readyForDrawing": {
-    "header": "We're all set to draw winners for {{raffleName}}!",
-    "meta": {
-      "participants": "{{count}} participants",
-      "numberOfWinners": {
-        "one": "1 winner",
-        "other": "{{count}} winners"
-      }
+  raffleSetupSettings: {
+    header: "What're the specifics of this raffle?",
+    nameInput: {
+      label: "Name",
     },
-    "runDrawingCta": "Let's Go!",
-  },
-  "winners": {
-    "header": {
-      "one": "Our WINNER",
-      "other": "Our WINNERS"
-    }
-  },
-  "homepageContent": {
-    "stripes": {
-      "why": {
-        "header": "You need to run a raffle.",
-        "para": "I made a raffle app. It's even free!"
+    winnerNumberInput: {
+      label: "Number of Winners",
+      inlineLabel: {
+        one: "winner",
+        other: "winners",
       },
-      "who": {
-        "header": "Meet the Author",
-        "para": "Learn more about <a href='https://benlimmer.com/about' target='_blank' rel='noopener noreferrer'>Ben Limmer</a>."
-      },
-      "getStarted": {
-        "cta": "Get Started"
-      }
-    }
+    },
   },
-  "raffleExport": {
-    "textFileTemplate": `# {{raffleName}}
+  raffleSetupAddParticipants: {
+    header: "Who's participating in this raffle?",
+    participantsInput: {
+      label: "Participants (one per line)",
+    },
+  },
+  raffleSetupConfirmParticipants: {
+    header: "Is this everyone?",
+  },
+  readyForDrawing: {
+    header: "We're all set to draw winners for {{raffleName}}!",
+    meta: {
+      participants: "{{count}} participants",
+      numberOfWinners: {
+        one: "1 winner",
+        other: "{{count}} winners",
+      },
+    },
+    runDrawingCta: "Let's Go!",
+  },
+  winners: {
+    header: {
+      one: "Our WINNER",
+      other: "Our WINNERS",
+    },
+  },
+  homepageContent: {
+    stripes: {
+      why: {
+        header: "You need to run a raffle.",
+        para: "I made a raffle app. It's even free!",
+      },
+      who: {
+        header: "Meet the Author",
+        para:
+          "Learn more about <a href='https://benlimmer.com/about' target='_blank' rel='noopener noreferrer'>Ben Limmer</a>.",
+      },
+      getStarted: {
+        cta: "Get Started",
+      },
+    },
+  },
+  raffleExport: {
+    textFileTemplate: `# {{raffleName}}
 Drawing had {{numParticipants}} participants, with {{numWinners}} winners.
 Winners were picked on {{drawingEndTime}}.
 
@@ -95,6 +99,6 @@ Winners were picked on {{drawingEndTime}}.
 # All Participants
 {{participants}}
     `,
-    "download": "Download Results"
+    download: "Download Results",
   },
 };

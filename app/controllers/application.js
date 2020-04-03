@@ -1,9 +1,9 @@
-import { dasherize } from '@ember/string';
-import { computed } from '@ember/object';
-import Controller from '@ember/controller';
+import { dasherize } from "@ember/string";
+import { computed } from "@ember/object";
+import Controller from "@ember/controller";
 
 export default Controller.extend({
-  routeCssName: computed('currentRouteName', function() {
-    return dasherize(this.get('currentRouteName'));
+  routeCssName: computed("currentRouteName", function () {
+    return dasherize(this.get("currentRouteName"));
   }),
 });

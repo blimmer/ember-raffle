@@ -1,23 +1,23 @@
-import { registerAsyncHelper } from '@ember/test';
-import { A } from '@ember/array';
-import { computed } from '@ember/object';
-import { classify } from '@ember/string';
-import { getOwner } from '@ember/application';
-import MediaService from 'ember-responsive/media';
+import { registerAsyncHelper } from "@ember/test";
+import { A } from "@ember/array";
+import { computed } from "@ember/object";
+import { classify } from "@ember/string";
+import { getOwner } from "@ember/application";
+import MediaService from "ember-responsive/media";
 
 MediaService.reopen({
   // Change this if you want a different default breakpoint in tests.
-  _defaultBreakpoint: 'desktop',
+  _defaultBreakpoint: "desktop",
 
-  _breakpointArr: computed('breakpoints', function() {
-    return Object.keys(this.get('breakpoints')) || A([]);
+  _breakpointArr: computed("breakpoints", function () {
+    return Object.keys(this.get("breakpoints")) || A([]);
   }),
 
   _forceSetBreakpoint(breakpoint) {
     let found = false;
 
     const props = {};
-    this.get('_breakpointArr').forEach(function(bp) {
+    this.get("_breakpointArr").forEach(function (bp) {
       const val = bp === breakpoint;
       if (val) {
         found = true;
@@ -40,20 +40,20 @@ MediaService.reopen({
   init() {
     this._super(...arguments);
 
-    this._forceSetBreakpoint(this.get('_defaultBreakpoint'));
-  }
+    this._forceSetBreakpoint(this.get("_defaultBreakpoint"));
+  },
 });
 
-export default registerAsyncHelper('setBreakpoint', function(app, breakpoint) {
+export default registerAsyncHelper("setBreakpoint", function (app, breakpoint) {
   // this should use getOwner once that's supported
-  const mediaService = app.__deprecatedInstance__.lookup('service:media');
+  const mediaService = app.__deprecatedInstance__.lookup("service:media");
   mediaService._forceSetBreakpoint(breakpoint);
 });
 
 export function setBreakpointForIntegrationTest(container, breakpoint) {
-  const mediaService = getOwner(container).lookup('service:media');
+  const mediaService = getOwner(container).lookup("service:media");
   mediaService._forceSetBreakpoint(breakpoint);
-  container.set('media', mediaService);
+  container.set("media", mediaService);
 
   return mediaService;
 }

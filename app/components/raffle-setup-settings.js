@@ -1,10 +1,10 @@
-import Component from '@ember/component';
+import Component from "@ember/component";
 
 export default Component.extend({
   saveRaffleSettings() {
-    let raffle = this.get('raffle');
+    let raffle = this.get("raffle");
     raffle.save().then(() => {
-      this.sendAction('showRaffleSetupInfo', raffle);
+      this.sendAction("showRaffleSetupInfo", raffle);
     });
-  }
+  },
 });

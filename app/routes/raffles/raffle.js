@@ -1,12 +1,12 @@
-import Route from '@ember/routing/route';
+import Route from "@ember/routing/route";
 
 export default Route.extend({
   actions: {
     showRaffleSetupInfo(raffle) {
-      this.transitionTo('raffles.raffle.setup.index', raffle);
+      this.transitionTo("raffles.raffle.setup.index", raffle);
     },
     error() {
-      this.transitionTo('raffles');
-    }
-  }
+      this.transitionTo("raffles");
+    },
+  },
 });
