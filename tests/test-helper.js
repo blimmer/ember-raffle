@@ -26,7 +26,7 @@ before(function () {
   });
   Component.reopen(ComponentTestingMixin);
 
-  this.sandbox = sinon.sandbox.create();
+  this.sandbox = sinon.createSandbox();
 });
 
 afterEach(function () {
