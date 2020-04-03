@@ -1,17 +1,25 @@
 import { Promise as EmberPromise } from "rsvp";
-import { computed, get } from "@ember/object";
+import { get } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@ember/component";
 import { chain } from "lodash";
 
 export default Component.extend({
   store: service(),
-  nameList: computed(function () {
+
+  didReceiveAttrs() {
+    this._super(...arguments);
+
     let participants = this.get("raffle.participants");
-    return participants.reduce((str, participant) => {
-      return (str += `${participant.get("name")}\n`);
-    }, "");
-  }),
+    this.set(
+      "nameList",
+      participants.reduce((str, participant) => {
+        return (str += `${participant.get("name")}\n`);
+      }, "")
+    );
+  },
+
+  nameList: null,
   gatherParticipants() {
     let names = chain(this.get("nameList"))
       .split("\n")
